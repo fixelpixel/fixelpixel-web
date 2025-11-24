@@ -1,0 +1,3105 @@
+
+<!-- 
+  Production Build
+  Generated: 2025-11-24T23:37:53.417Z
+  Build Type: Optimized for production
+  Framework: React 18 (Production)
+  Three.js: r128
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+
+  
+  <!-- Production Build -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Fixel Pixel 2.0 - AI Truth Layer for Attribution | Stop Wasting Ad Spend</title>
+  <meta name="description" content="Transform your attribution with AI-powered truth layer. See exactly what drives growth. No more guesswork. Start free in 5 minutes.">
+  <meta name="keywords" content="attribution software, marketing analytics, AI attribution, ad tracking, ROI optimization, customer journey">
+  <meta name="author" content="Fixel">
+  <link rel="canonical" href="https://fixelpixel.com">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Fixel Pixel 2.0 - AI Truth Layer for Attribution">
+  <meta property="og:description" content="Stop wasting ad spend on guesswork. See exactly what drives growth with AI-powered attribution.">
+  <meta property="og:image" content="https://fixelpixel.com/og-image.jpg">
+  <meta property="og:url" content="https://fixelpixel.com">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fixel Pixel 2.0 - AI Truth Layer for Attribution">
+  <meta name="twitter:description" content="Stop wasting ad spend on guesswork. See exactly what drives growth with AI-powered attribution.">
+  <meta name="twitter:image" content="https://fixelpixel.com/twitter-card.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js for 3D effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- React -->
+  <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
+  
+  <style>
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.6);
+}
+
+/* Grain texture overlay */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(2deg); }
+  66% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    opacity: 0.6;
+    filter: blur(20px);
+  }
+  50% { 
+    opacity: 0.9;
+    filter: blur(30px);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.1) 50%, 
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #10b981 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 3D Card hover effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-3d:hover {
+  transform: rotateX(2deg) rotateY(5deg) scale(1.02);
+}
+
+/* Magnetic button effect */
+.btn-magnetic {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.05);
+}
+
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #10b981, #6366f1);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-magnetic:hover::before {
+  opacity: 1;
+}
+
+/* Ripple effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Range Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #6366f1);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.7);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #6366f1);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.7);
+}
+
+/* Theme tokens and overrides */
+:root[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: rgba(15, 23, 42, 0.8);
+  --surface-soft: rgba(15, 23, 42, 0.6);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #e2e8f0;
+  --text-sub: #94a3b8;
+}
+
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-soft: rgba(255, 255, 255, 0.85);
+  --border: rgba(15, 23, 42, 0.08);
+  --text: #0f172a;
+  --text-sub: #475569;
+}
+
+[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.surface-card {
+  background: var(--surface-soft);
+  border-color: var(--border);
+}
+.bg-surface-override {
+  background: var(--surface);
+}
+.border-surface-line {
+  border-color: var(--border);
+}
+
+.glass-morphism-strong {
+  background: var(--surface);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border);
+}
+
+.glass-morphism {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+
+[data-theme="light"] .text-white { color: var(--text) !important; }
+[data-theme="light"] .text-slate-400 { color: var(--text-sub) !important; }
+[data-theme="light"] .text-slate-300 { color: var(--text-sub) !important; }
+[data-theme="light"] .text-slate-500 { color: #64748b !important; }
+[data-theme="light"] .text-slate-600 { color: #475569 !important; }
+
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-slate-900\\/50,
+[data-theme="light"] .bg-slate-950\\/50 {
+  background-color: var(--surface) !important;
+}
+
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-900 {
+  border-color: var(--border) !important;
+}
+
+    
+    /* Additional glass morphism styles */
+    .glass-morphism-strong {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+  <!-- Cache Control (configure in server) -->
+  <!-- Recommended: Cache-Control: public, max-age=31536000 for static assets -->
+
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Fixel Pixel 2.0",
+    "applicationCategory": "BusinessApplication",
+    "description": "AI-powered attribution platform that reveals the truth about your marketing performance",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "14-day free trial"
+    },
+    "operatingSystem": "Web",
+    "provider": {
+      "@type": "Organization",
+      "name": "Fixel",
+      "url": "https://fixelpixel.com"
+    }
+  }
+  </script>
+
+</head>
+<body>
+  <div class="grain"></div>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef, useMemo } = React;
+
+    // ==================== UTILITIES ====================
+    // Analytics utilities
+const trackEvent = (eventName, eventData = {}) => {
+  // Google Analytics 4
+  if (typeof gtag !== 'undefined') {
+    gtag('event', eventName, eventData);
+  }
+  
+  // Facebook Pixel
+  if (typeof fbq !== 'undefined') {
+    fbq('track', eventName, eventData);
+  }
+  
+  // Console log for debugging
+  console.log('Analytics Event:', eventName, eventData);
+};
+
+// Make available globally
+window.trackEvent = trackEvent;
+    // Form validation utilities
+const validateEmail = (email) => {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+};
+
+const submitToAPI = async (formData, formType) => {
+  // Simulate API call - replace with actual endpoint
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // Success simulation
+      console.log('Form submitted:', formType, formData);
+      if (window.trackEvent) {
+        window.trackEvent('form_submit', { form_type: formType });
+      }
+      resolve({ success: true });
+      
+      // For error testing: reject({ error: 'API Error' });
+    }, 1500);
+  });
+};
+
+// Make available globally
+window.validateEmail = validateEmail;
+window.submitToAPI = submitToAPI;
+
+    // ==================== COMPONENTS ====================
+    /**
+ * FixelDynamicLogo
+ * Автономный компонент логотипа.
+ * - Анимирует "Fixel Pixel" -> "FP" при скролле.
+ * - Содержит фирменные фиолетовые скобки (#520260).
+ * - Содержит "2.0" в степени (Emerald).
+ * - Поддерживает светлую/темную тему через проп isDark.
+ */
+
+const LogoAnimator = ({ isScrolled, isDark }) => {
+  const text = "Fixel Pixel";
+  const letters = text.split('');
+  
+  // Логика задержки для эффекта "змейки" (последовательное исчезновение/появление)
+  const getDelay = (index) => {
+    if (isScrolled) {
+      // При сворачивании: буквы исчезают справа налево к центрам (F и P)
+      if (index >= 1 && index <= 5) return `${(5 - index) * 50}ms`;
+      if (index >= 7 && index <= 10) return `${(10 - index) * 50}ms`;
+    } else {
+      // При разворачивании: буквы появляются от центров наружу
+      if (index >= 1 && index <= 5) return `${(index - 1) * 50}ms`;
+      if (index >= 7 && index <= 10) return `${(index - 7) * 50}ms`;
+    }
+    return '0ms';
+  };
+
+  return (
+    // Контейнер текста: выравнивание и размер
+    <div className="flex items-center font-bold tracking-tight text-2xl h-9 pb-1">
+      {letters.map((char, i) => (
+        <span 
+          key={i}
+          // Базовые стили букв + переходы
+          className={`inline-block transition-all duration-500 ease-in-out whitespace-pre ${isDark ? "text-white" : "text-slate-900"}`}
+          style={{
+            // Индексы 0 (F) и 6 (P) остаются всегда
+            // Остальные схлопываются в ширину 0 и прозрачность 0
+            ...((i !== 0 && i !== 6) ? { 
+              maxWidth: isScrolled ? '0px' : '20px', 
+              opacity: isScrolled ? 0 : 1,
+              transform: isScrolled ? 'translateX(-5px)' : 'translateX(0)',
+              transitionDelay: getDelay(i)
+            } : {})
+          }}
+        >
+          {char}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const FixelDynamicLogo = ({ isDark = true }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Слушатель скролла для триггера анимации
+  useEffect(() => {
+    const handleScroll = () => {
+      // Анимация срабатывает при скролле > 10px
+      setIsScrolled(window.scrollY > 10);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Триггер при монтировании на случай, если страница уже прокручена
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Стиль скобок: Фирменный цвет + небольшая тень для читаемости в Dark Mode
+  const bracketStyle = {
+    color: '#520260',
+    textShadow: isDark ? '0 0 15px rgba(82, 2, 96, 0.8), 0 0 2px rgba(255,255,255,0.3)' : 'none'
+  };
+
+  return (
+    <div className="flex items-center cursor-pointer group select-none h-full">
+      {/* Левая скобка */}
+      <span 
+        className="text-3xl font-bold mr-1.5 pb-1 transition-all duration-300" 
+        style={bracketStyle}
+      >
+        {`{`}
+      </span>
+      
+      {/* Анимированный текст */}
+      <LogoAnimator isScrolled={isScrolled} isDark={isDark} />
+      
+      {/* Правая часть: Скобка + Степень 2.0 */}
+      <div className="relative flex items-center">
+        <span 
+          className="text-3xl font-bold ml-1.5 pb-1 transition-all duration-300" 
+          style={bracketStyle}
+        >
+          {`}`}
+        </span>
+        
+        {/* Superscript 2.0 */}
+        <span 
+          className={`absolute -top-1 -right-6 text-[10px] font-extrabold font-mono tracking-tighter transition-colors duration-300 ${isDark ? "text-emerald-400" : "text-emerald-600"}`}
+        >
+          2.0
+        </span>
+      </div>
+    </div>
+  );
+};
+    const Navbar = ({ isDark = true, toggleTheme }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [menuOpen]);
+  
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [menuOpen]);
+  
+  const navLinks = [
+    { label: 'Product', href: '#product' },
+    { label: 'Features', href: '#features' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Docs', href: '#docs' },
+    { label: 'Blog', href: '#blog' }
+  ];
+  
+  return (
+    <>
+      <nav
+        role="navigation"
+        aria-label="Main navigation"
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-300 ${
+          isDark 
+            ? 'bg-slate-950/80 border-slate-800/50' 
+            : 'bg-white/80 border-slate-200'
+        }`}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <a href="#" className="flex items-center">
+              <FixelDynamicLogo isDark={isDark} />
+            </a>
+            
+            {/* Desktop Links */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map(link => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-slate-400 hover:text-white transition-colors font-medium"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center gap-4">
+              {toggleTheme && (
+                <button
+                  onClick={toggleTheme}
+                  className={`p-2 rounded-full transition-colors ${
+                    isDark 
+                      ? 'bg-slate-800 text-yellow-400 hover:bg-slate-700' 
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                  aria-label="Toggle theme"
+                >
+                  {isDark ? (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="5"></circle>
+                      <line x1="12" y1="1" x2="12" y2="3"></line>
+                      <line x1="12" y1="21" x2="12" y2="23"></line>
+                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                      <line x1="1" y1="12" x2="3" y2="12"></line>
+                      <line x1="21" y1="12" x2="23" y2="12"></line>
+                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                  ) : (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                  )}
+                </button>
+              )}
+              <button
+                onClick={() => trackEvent('click_signin', { location: 'navbar' })}
+                className="px-6 py-2 text-white font-semibold hover:text-emerald-400 transition-colors">
+                Sign In
+              </button>
+              <button
+                onClick={() => trackEvent('click_start_trial', { location: 'navbar' })}
+                className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+                Start Free →
+              </button>
+            </div>
+            
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="md:hidden w-10 h-10 flex items-center justify-center text-white hover:text-emerald-400 transition-colors"
+              aria-label="Open navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+      
+      {/* Mobile Sidebar */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+        className={`fixed top-0 right-0 h-full w-80 bg-slate-950 border-l border-slate-800 z-50 transition-transform duration-300 ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="p-6">
+          {/* Close Button */}
+          <div className="flex justify-end mb-8">
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+              aria-label="Close navigation menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Mobile Links */}
+          <div className="space-y-6">
+            {navLinks.map(link => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="block text-2xl font-bold text-slate-400 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          
+          {/* Mobile CTA */}
+          <div className="mt-12 space-y-4">
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="w-full px-6 py-3 text-white font-semibold border border-slate-700 rounded-xl hover:border-slate-600 transition-colors"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg"
+            >
+              Start Free →
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      {/* Backdrop */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+    </>
+  );
+};
+    const TrialFormButton = ({ location }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    
+    // Validation
+    if (!name.trim()) {
+      setError('Please enter your name');
+      return;
+    }
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+    
+    setLoading(true);
+    
+    try {
+      await submitToAPI({ name, email, company }, 'trial_signup');
+      setSuccess(true);
+      trackEvent('trial_signup_success', { location });
+      setTimeout(() => {
+        setShowModal(false);
+        setSuccess(false);
+        setName('');
+        setEmail('');
+        setCompany('');
+      }, 2000);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+      trackEvent('trial_signup_error', { location });
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  return (
+    <>
+      <button
+        onClick={() => {
+          setShowModal(true);
+          trackEvent('click_start_trial', { location });
+        }}
+        aria-label="Start free trial"
+        className="btn-magnetic ripple group px-8 py-4 min-h-[44px] min-w-[44px] bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-semibold rounded-2xl shadow-[0_20px_60px_rgba(16,185,129,0.4)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-emerald-500/50"
+      >
+        <span className="flex items-center gap-3">
+          Start Free
+          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </span>
+      </button>
+      
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowModal(false)}
+          />
+          
+          <div className="relative glass-morphism-strong rounded-3xl p-8 max-w-md w-full border-2 border-emerald-500/20 shadow-2xl">
+            {!success ? (
+              <>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">Start Your Free Trial</h3>
+                  <p className="text-slate-400 text-sm">No credit card required • 14 days free</p>
+                </div>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                      Work Email *
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      placeholder="john@company.com"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-2">
+                      Company (optional)
+                    </label>
+                    <input
+                      id="company"
+                      type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      placeholder="Acme Inc."
+                    />
+                  </div>
+                  
+                  {error && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/50 rounded-xl text-red-400 text-sm">
+                      {error}
+                    </div>
+                  )}
+                  
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
+                  >
+                    {loading ? 'Creating Account...' : 'Start Free Trial'}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Welcome aboard!</h3>
+                <p className="text-slate-400">Check your email to get started</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+    const DemoFormButton = ({ location }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    website: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    
+    // Validation
+    if (!formData.name.trim()) {
+      setError('Please enter your name');
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+    if (!formData.company.trim()) {
+      setError('Please enter your company name');
+      return;
+    }
+    
+    setLoading(true);
+    
+    try {
+      await submitToAPI(formData, 'demo_request');
+      setSuccess(true);
+      trackEvent('demo_request_success', { location });
+      setTimeout(() => {
+        setShowModal(false);
+        setSuccess(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          website: '',
+          message: ''
+        });
+      }, 2000);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+      trackEvent('demo_request_error', { location });
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  return (
+    <>
+      <button
+        onClick={() => {
+          setShowModal(true);
+          trackEvent('click_book_demo', { location });
+        }}
+        aria-label="Book a demo"
+        className="btn-magnetic ripple group px-8 py-4 min-h-[44px] min-w-[44px] bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold rounded-2xl border-2 border-white/20 hover:border-white/30 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20"
+      >
+        <span className="flex items-center gap-3">
+          Book Demo
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </span>
+      </button>
+      
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowModal(false)}
+          />
+          
+          <div className="relative glass-morphism-strong rounded-3xl p-8 max-w-lg w-full border-2 border-indigo-500/20 shadow-2xl max-h-[90vh] overflow-y-auto">
+            {!success ? (
+              <>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">Book Your Demo</h3>
+                  <p className="text-slate-400 text-sm">We'll show you how Fixel can transform your attribution</p>
+                </div>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="col-span-2">
+                      <label htmlFor="demo-name" className="block text-sm font-medium text-slate-300 mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        id="demo-name"
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="col-span-2">
+                      <label htmlFor="demo-email" className="block text-sm font-medium text-slate-300 mb-2">
+                        Work Email *
+                      </label>
+                      <input
+                        id="demo-email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                        placeholder="john@company.com"
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="demo-company" className="block text-sm font-medium text-slate-300 mb-2">
+                        Company *
+                      </label>
+                      <input
+                        id="demo-company"
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) => setFormData({...formData, company: e.target.value})}
+                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                        placeholder="Acme Inc."
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="demo-website" className="block text-sm font-medium text-slate-300 mb-2">
+                        Website
+                      </label>
+                      <input
+                        id="demo-website"
+                        type="url"
+                        value={formData.website}
+                        onChange={(e) => setFormData({...formData, website: e.target.value})}
+                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                        placeholder="https://..."
+                      />
+                    </div>
+                    
+                    <div className="col-span-2">
+                      <label htmlFor="demo-message" className="block text-sm font-medium text-slate-300 mb-2">
+                        Tell us about your needs (optional)
+                      </label>
+                      <textarea
+                        id="demo-message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        rows={3}
+                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
+                        placeholder="What are your biggest attribution challenges?"
+                      />
+                    </div>
+                  </div>
+                  
+                  {error && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/50 rounded-xl text-red-400 text-sm">
+                      {error}
+                    </div>
+                  )}
+                  
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
+                  >
+                    {loading ? 'Booking Demo...' : 'Book Demo'}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Demo Scheduled!</h3>
+                <p className="text-slate-400">We'll reach out shortly to confirm your demo time</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+    // ==================== SECTIONS ====================
+    // Floating Dashboard Component
+const FloatingDashboard = () => {
+  const [metrics, setMetrics] = useState({
+    revenue: 42392,
+    roas: 4.2,
+    integrity: 99.1,
+    ltv: 185
+  });
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMetrics(prev => ({
+        revenue: prev.revenue + Math.floor(Math.random() * 100),
+        roas: Number((prev.roas + (Math.random() * 0.1 - 0.05)).toFixed(1)),
+        integrity: Math.min(99.9, prev.integrity + Math.random() * 0.1),
+        ltv: prev.ltv + Math.floor(Math.random() * 2)
+      }));
+    }, 2000);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return (
+    <div className="card-3d relative">
+      {/* Glow effect */}
+      <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 via-indigo-500/20 to-emerald-500/20 rounded-3xl blur-3xl animate-glow"></div>
+      
+      {/* Main card */}
+      <div className="relative glass-morphism rounded-3xl p-8 space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="text-xs font-mono text-emerald-400 uppercase tracking-wider">Reality Sync</div>
+            <div className="text-sm text-slate-400">Causal Attribution Engine</div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-xs font-mono text-emerald-400">Live</span>
+          </div>
+        </div>
+        
+        {/* Metrics Grid */}
+        <div className="grid grid-cols-2 gap-4">
+          <MetricCard 
+            label="Recovered Revenue" 
+            value={`$${metrics.revenue.toLocaleString()}`}
+            color="emerald"
+            trend="+18%"
+          />
+          <MetricCard 
+            label="Real ROAS" 
+            value={`${metrics.roas}x`}
+            color="indigo"
+            trend="+0.8x"
+          />
+          <MetricCard 
+            label="Signal Integrity" 
+            value={`${metrics.integrity.toFixed(1)}%`}
+            color="emerald"
+            trend="Stable"
+          />
+          <MetricCard 
+            label="LTV 90d" 
+            value={`$${metrics.ltv}`}
+            color="indigo"
+            trend="+12%"
+          />
+        </div>
+        
+        {/* Live Chart */}
+        <div className="relative h-32 rounded-2xl overflow-hidden bg-slate-950/50 p-4">
+          <LiveChart />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MetricCard = ({ label, value, color, trend }) => (
+  <div className="group relative p-4 rounded-2xl bg-slate-950/50 border border-slate-800 hover:border-slate-700 transition-all duration-300">
+    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+    <div className="relative">
+      <div className="text-xs font-mono text-slate-500 uppercase tracking-wide mb-1">{label}</div>
+      <div className={`text-2xl font-bold ${color === 'emerald' ? 'text-emerald-400' : 'text-indigo-400'}`}>
+        {value}
+      </div>
+      <div className="text-xs text-slate-600 mt-1">{trend}</div>
+    </div>
+  </div>
+);
+
+const LiveChart = () => {
+  const [data, setData] = useState(Array.from({ length: 12 }, () => Math.random() * 100));
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setData(prev => [...prev.slice(1), Math.random() * 100]);
+    }, 1500);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return (
+    <div className="relative w-full h-full flex items-end gap-1.5">
+      {data.map((height, i) => (
+        <div key={i} className="flex-1 relative group">
+          <div 
+            className="absolute bottom-0 left-0 right-0 rounded-t-sm bg-gradient-to-t from-emerald-500 to-indigo-400 transition-all duration-500 ease-out"
+            style={{ height: `${height}%` }}
+          >
+            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Hero = ({ TrialFormButton }) => {
+  const canvasRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Three.js scene setup for 3D background
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    
+    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    
+    // Create particle system
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = window.innerWidth < 768 ? 500 : 2000;
+    const positions = new Float32Array(particlesCount * 3);
+    const colors = new Float32Array(particlesCount * 3);
+    
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 10;
+      positions[i + 1] = (Math.random() - 0.5) * 10;
+      positions[i + 2] = (Math.random() - 0.5) * 10;
+      
+      const color = Math.random() > 0.5 ? 
+        new THREE.Color(0x10b981) : 
+        new THREE.Color(0x6366f1);
+      colors[i] = color.r;
+      colors[i + 1] = color.g;
+      colors[i + 2] = color.b;
+    }
+    
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.02,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+    });
+    
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
+    
+    camera.position.z = 3;
+    
+    // Mark as loaded after first render
+    setTimeout(() => setIsLoading(false), 100);
+    
+    // Animation loop
+    const animate = () => {
+      requestAnimationFrame(animate);
+      
+      particles.rotation.y += 0.0005;
+      particles.rotation.x += 0.0002;
+      
+      // Mouse parallax effect
+      camera.position.x = mousePos.x * 0.0005;
+      camera.position.y = -mousePos.y * 0.0005;
+      
+      renderer.render(scene, camera);
+    };
+    
+    animate();
+    
+    // Handle resize
+    const handleResize = () => {
+      camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      particlesGeometry.dispose();
+      particlesMaterial.dispose();
+      renderer.dispose();
+    };
+  }, [mousePos]);
+  
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX - window.innerWidth / 2, y: e.clientY - window.innerHeight / 2 });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  // Scroll tracking with throttle
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  return (
+    <section className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      {/* Loading Skeleton */}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center z-20 bg-slate-950">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-16 h-16 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+            <p className="text-slate-500 font-mono text-sm">Initializing Truth Layer...</p>
+          </div>
+        </div>
+      )}
+      
+      {/* 3D Background Canvas */}
+      <canvas 
+        ref={canvasRef}
+        className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
+        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+      />
+      
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.15),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(99,102,241,0.15),transparent_50%)]" />
+      
+      {/* Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
+          transform: `translateY(${scrollY * 0.3}px)`
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Text */}
+          <div className="space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-mono text-emerald-300 tracking-wider uppercase">
+                AI Truth Layer • Live
+              </span>
+            </div>
+            
+            {/* Headline */}
+            <h1 
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight"
+              style={{ 
+                fontWeight: 900,
+                letterSpacing: '-0.04em'
+              }}
+            >
+              <span className="block text-white">
+                The Truth
+              </span>
+              <span className="block text-gradient">
+                Layer.
+              </span>
+            </h1>
+            
+            {/* Subheadline with typewriter effect */}
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-400 leading-relaxed max-w-xl font-light">
+              AI-driven attribution that captures{' '}
+              <span className="text-emerald-400 font-semibold">everything</span>,
+              understands{' '}
+              <span className="text-indigo-400 font-semibold">causality</span>,
+              and reveals{' '}
+              <span className="text-white font-semibold">real ROAS</span>.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+              <TrialFormButton location="hero" />
+              <button
+                onClick={() => trackEvent('click_watch_demo', { location: 'hero' })}
+                aria-label="Watch product demo"
+                className="px-8 py-4 min-h-[44px] min-w-[44px] glass-morphism hover:bg-white/10 text-white font-semibold rounded-2xl transition-all duration-300 group focus:outline-none focus:ring-4 focus:ring-indigo-500/50">
+                <span className="flex items-center gap-3">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch Demo
+                </span>
+              </button>
+            </div>
+            
+            {/* Social Proof */}
+            <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-4">
+              <div className="text-sm">
+                <div className="text-xl sm:text-2xl font-bold text-white">2,000+</div>
+                <div className="text-slate-500 font-mono">Shopify Stores</div>
+              </div>
+              <div className="w-px h-12 bg-slate-800"></div>
+              <div className="text-sm">
+                <div className="text-xl sm:text-2xl font-bold text-emerald-400">$1B+</div>
+                <div className="text-slate-500 font-mono">Tracked Revenue</div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right Column - Interactive Dashboard */}
+          <div className="relative">
+            <FloatingDashboard />
+          </div>
+        </div>
+      </div>
+      
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <span className="text-xs text-slate-500 font-mono uppercase tracking-wider">Scroll to explore</span>
+        <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+  );
+};
+    const ScrollytellingProblem = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    const currentRef = sectionRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (!entry.target.dataset.tracked) {
+            trackEvent('view_section', { section: 'scrollytelling_problem' });
+            entry.target.dataset.tracked = 'true';
+          }
+        }
+      },
+      { threshold: 0.2 }
+    );
+    
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+  
+  const problems = [
+    {
+      icon: '🚫',
+      title: 'Data Loss',
+      stat: '30-40%',
+      statLabel: 'Events Lost',
+      description: 'iOS blocking, cookie deletion, and ad-blocker apocalypse. Traditional pixels lose 30-40% of events before they even reach the server.',
+      illusion: 'You see partial data',
+      truth: '100% event capture'
+    },
+    {
+      icon: '🎯',
+      title: 'Attribution Errors',
+      stat: '2.1x',
+      statLabel: 'ROAS Distortion',
+      description: 'Last-click bias credits the wrong channel. Bottom-funnel channels steal glory while top-funnel investments get ignored.',
+      illusion: 'Last-touch wins',
+      truth: 'Causal weighting'
+    },
+    {
+      icon: '📊',
+      title: 'Modeled Conversions',
+      stat: '???',
+      statLabel: 'Mystery Box',
+      description: 'Google black box estimates conversions you cannot see. You are optimizing toward a number that may not exist.',
+      illusion: 'Modeled guesses',
+      truth: 'Ground truth data'
+    }
+  ];
+  
+  return (
+    <section 
+      ref={sectionRef}
+      className="py-32 bg-gradient-to-b from-slate-950 to-slate-900 relative overflow-hidden"
+    >
+      {/* Background grid */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(rgba(16,185,129,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+            <span className="text-xs font-mono text-red-400 uppercase tracking-wider">
+              The Illusion
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Broken</span> Attribution Reality
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+            Your analytics lie to you. Not because they want to — because they can't see the truth.
+          </p>
+        </div>
+        
+        {/* Problem Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {problems.map((problem, index) => (
+            <div
+              key={problem.title}
+              className={`glass-morphism rounded-3xl p-8 transition-all duration-700 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{
+                transitionDelay: `${index * 100}ms`
+              }}
+            >
+              {/* Icon */}
+              <div className="text-6xl mb-6 animate-float" style={{
+                animationDelay: `${index * 0.2}s`
+              }}>
+                {problem.icon}
+              </div>
+              
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-white mb-2">
+                {problem.title}
+              </h3>
+              
+              {/* Stat */}
+              <div className="mb-6">
+                <div className="text-4xl font-black text-red-400 mb-1">
+                  {problem.stat}
+                </div>
+                <div className="text-sm font-mono text-slate-500 uppercase tracking-wider">
+                  {problem.statLabel}
+                </div>
+              </div>
+              
+              {/* Description */}
+              <p className="text-slate-400 mb-6 leading-relaxed">
+                {problem.description}
+              </p>
+              
+              {/* Comparison */}
+              <div className="space-y-3 pt-6 border-t border-slate-700/50">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center">
+                    <span className="text-red-400 text-xs">✗</span>
+                  </div>
+                  <span className="text-sm text-slate-500 line-through">
+                    {problem.illusion}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <span className="text-emerald-400 text-xs">✓</span>
+                  </div>
+                  <span className="text-sm text-emerald-400 font-medium">
+                    {problem.truth}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Comparison Table */}
+        <div 
+          className={`glass-morphism-strong rounded-3xl p-8 md:p-12 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ transitionDelay: '400ms' }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-white mb-3">
+              Illusion vs Truth
+            </h3>
+            <p className="text-slate-400">
+              What traditional analytics show you vs what Fixel Pixel reveals
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Illusion Mode */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <h4 className="text-xl font-bold text-red-400">Illusion Mode</h4>
+              </div>
+              {[
+                { label: 'Event Capture', value: '60%' },
+                { label: 'Attribution Accuracy', value: '47%' },
+                { label: 'Signal Drift', value: '35%' },
+                { label: 'Data Integrity', value: '65%' }
+              ].map((metric) => (
+                <div key={metric.label} className="flex items-center justify-between p-4 rounded-xl bg-slate-900/50 border border-red-500/10">
+                  <span className="text-slate-300">{metric.label}</span>
+                  <span className="font-mono font-bold text-red-400">{metric.value}</span>
+                </div>
+              ))}
+            </div>
+            
+            {/* Truth Mode */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                <h4 className="text-xl font-bold text-emerald-400">Truth Mode</h4>
+              </div>
+              {[
+                { label: 'Event Capture', value: '98%' },
+                { label: 'Attribution Accuracy', value: '94%' },
+                { label: 'Signal Drift', value: '2%' },
+                { label: 'Data Integrity', value: '99%' }
+              ].map((metric) => (
+                <div key={metric.label} className="flex items-center justify-between p-4 rounded-xl bg-slate-900/50 border border-emerald-500/10">
+                  <span className="text-slate-300">{metric.label}</span>
+                  <span className="font-mono font-bold text-emerald-400">{metric.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* CTA */}
+          <div className="mt-12 text-center">
+            <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_60px_rgba(16,185,129,0.4)]">
+              See Your Truth →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const RealitySwitchMetric = ({ label, value, suffix, mode, isAnimating, color, inverse, icon }) => {
+  const [displayValue, setDisplayValue] = useState(value);
+  const prevValueRef = useRef(value);
+  
+  useEffect(() => {
+    const prevValue = prevValueRef.current;
+    
+    if (value !== prevValue) {
+      const duration = 600;
+      const steps = 30;
+      const increment = (value - prevValue) / steps;
+      let currentStep = 0;
+      
+      const timer = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+          setDisplayValue(prevValue + (increment * currentStep));
+        } else {
+          setDisplayValue(value);
+          clearInterval(timer);
+        }
+      }, duration / steps);
+      
+      prevValueRef.current = value;
+      return () => clearInterval(timer);
+    }
+  }, [value]);
+  
+  const progressPercent = inverse ? 100 - value : value;
+  const colorClass = color === 'emerald' ? 'from-emerald-500 to-emerald-600' : 'from-red-500 to-orange-500';
+  
+  return (
+    <div className={`glass-morphism rounded-3xl p-8 transition-all duration-500 ${
+      isAnimating ? 'scale-95' : 'scale-100 hover:scale-105'
+    }`}>
+      <div className="text-4xl mb-4">{icon}</div>
+      <div className="text-sm font-mono text-slate-500 uppercase tracking-wider mb-2">
+        {label}
+      </div>
+      <div className={`text-5xl font-black mb-4 transition-colors duration-500 ${
+        color === 'emerald' ? 'text-emerald-400' : 'text-red-400'
+      }`}>
+        {displayValue.toFixed(1)}{suffix}
+      </div>
+      
+      {/* Progress Bar */}
+      <div className="relative w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+        <div 
+          className={`h-full bg-gradient-to-r ${colorClass} transition-all duration-700 ease-out rounded-full`}
+          style={{ width: `${progressPercent}%` }}
+        />
+      </div>
+    </div>
+  );
+};
+
+const RealitySwitch = () => {
+  const [mode, setMode] = useState('illusion');
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  const metrics = {
+    illusion: {
+      roas: 2.1,
+      visibility: 60,
+      drift: 35,
+      integrity: 65
+    },
+    truth: {
+      roas: 4.2,
+      visibility: 98,
+      drift: 2,
+      integrity: 99
+    }
+  };
+  
+  const currentMetrics = metrics[mode];
+  
+  const handleToggle = () => {
+    setIsAnimating(true);
+    setMode(prev => prev === 'illusion' ? 'truth' : 'illusion');
+    setTimeout(() => setIsAnimating(false), 600);
+  };
+  
+  const handleKeyDown = (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      handleToggle();
+    }
+  };
+  
+  return (
+    <section className="py-32 bg-slate-950 relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${
+          mode === 'truth' ? 'opacity-100' : 'opacity-0'
+        }`}>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_50%)]" />
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+            <div className={`w-2 h-2 rounded-full transition-colors duration-500 ${
+              mode === 'truth' ? 'bg-emerald-500' : 'bg-red-500'
+            } animate-pulse`} />
+            <span className={`text-xs font-mono uppercase tracking-wider transition-colors duration-500 ${
+              mode === 'truth' ? 'text-emerald-400' : 'text-red-400'
+            }`}>
+              {mode === 'truth' ? 'Truth Mode Active' : 'Illusion Mode'}
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+            Reality <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Switch</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12">
+            Toggle between what traditional analytics show you and what Fixel Pixel reveals
+          </p>
+          
+          {/* Toggle Switch */}
+          <div className="flex items-center justify-center gap-6 mb-16">
+            <span className={`text-lg font-semibold transition-colors duration-300 ${
+              mode === 'illusion' ? 'text-red-400' : 'text-slate-600'
+            }`}>
+              Illusion Mode
+            </span>
+            
+            <button
+              onClick={handleToggle}
+              onKeyDown={handleKeyDown}
+              className="relative w-24 h-12 rounded-full focus:outline-none focus:ring-4 focus:ring-emerald-500/50 transition-all duration-300"
+              style={{
+                background: mode === 'truth' 
+                  ? 'linear-gradient(135deg, #10b981, #6366f1)' 
+                  : 'linear-gradient(135deg, #ef4444, #f97316)'
+              }}
+              aria-label={`Switch to ${mode === 'truth' ? 'illusion' : 'truth'} mode`}
+              role="switch"
+              aria-checked={mode === 'truth'}
+            >
+              <div 
+                className={`absolute top-1 w-10 h-10 bg-white rounded-full shadow-2xl transition-all duration-500 ${
+                  mode === 'truth' ? 'left-[calc(100%-44px)]' : 'left-1'
+                }`}
+                style={{
+                  transform: isAnimating ? 'scale(0.9)' : 'scale(1)'
+                }}
+              >
+                <div className="absolute inset-0 flex items-center justify-center text-xl">
+                  {mode === 'truth' ? '✓' : '✗'}
+                </div>
+              </div>
+            </button>
+            
+            <span className={`text-lg font-semibold transition-colors duration-300 ${
+              mode === 'truth' ? 'text-emerald-400' : 'text-slate-600'
+            }`}>
+              Truth Mode
+            </span>
+          </div>
+        </div>
+        
+        {/* Metrics Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <RealitySwitchMetric
+            label="ROAS"
+            value={currentMetrics.roas}
+            suffix="x"
+            mode={mode}
+            isAnimating={isAnimating}
+            color={mode === 'truth' ? 'emerald' : 'red'}
+            icon="📈"
+          />
+          <RealitySwitchMetric
+            label="Visibility"
+            value={currentMetrics.visibility}
+            suffix="%"
+            mode={mode}
+            isAnimating={isAnimating}
+            color={mode === 'truth' ? 'emerald' : 'red'}
+            icon="👁️"
+          />
+          <RealitySwitchMetric
+            label="Signal Drift"
+            value={currentMetrics.drift}
+            suffix="%"
+            mode={mode}
+            isAnimating={isAnimating}
+            color={mode === 'truth' ? 'emerald' : 'red'}
+            inverse={true}
+            icon="📊"
+          />
+          <RealitySwitchMetric
+            label="Data Integrity"
+            value={currentMetrics.integrity}
+            suffix="%"
+            mode={mode}
+            isAnimating={isAnimating}
+            color={mode === 'truth' ? 'emerald' : 'red'}
+            icon="🔒"
+          />
+        </div>
+        
+        {/* Comparison Stats */}
+        <div className="mt-16 grid md:grid-cols-2 gap-8">
+          <div className="glass-morphism rounded-3xl p-8">
+            <h3 className="text-2xl font-bold text-red-400 mb-6 flex items-center gap-3">
+              <span className="text-3xl">😵‍💫</span>
+              Illusion Mode Problems
+            </h3>
+            <ul className="space-y-4">
+              {[
+                'Last-click attribution bias',
+                'Missing 30-40% of events',
+                'Modeled conversion guesswork',
+                'No cross-device tracking',
+                'Platform data silos'
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xs mt-0.5">✗</span>
+                  <span className="text-slate-400">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="glass-morphism-strong rounded-3xl p-8 border-2 border-emerald-500/20">
+            <h3 className="text-2xl font-bold text-emerald-400 mb-6 flex items-center gap-3">
+              <span className="text-3xl">✨</span>
+              Truth Mode Advantages
+            </h3>
+            <ul className="space-y-4">
+              {[
+                'Causal attribution modeling',
+                '98% event capture rate',
+                'Server-side ground truth',
+                'Identity lock across devices',
+                'Unified data warehouse'
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs mt-0.5">✓</span>
+                  <span className="text-slate-300 font-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const LossCalculator = () => {
+  const [spend, setSpend] = useState(50000);
+  const [aov, setAov] = useState(150);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+  
+  useEffect(() => {
+    const currentRef = sectionRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+  
+  // Formula: (Monthly Spend * 30% data loss) * (AOV multiplier) * 12 months
+  const recovered = Math.floor((spend * 0.30) * (aov / 100) * 12);
+  const [displayValue, setDisplayValue] = useState(0);
+  const [targetValue, setTargetValue] = useState(recovered);
+  
+  useEffect(() => {
+    setTargetValue(recovered);
+  }, [recovered]);
+  
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    const duration = 2000;
+    const steps = 60;
+    const startValue = displayValue;
+    const increment = (targetValue - startValue) / steps;
+    let currentStep = 0;
+    
+    const timer = setInterval(() => {
+      currentStep++;
+      if (currentStep <= steps) {
+        setDisplayValue(Math.floor(startValue + (increment * currentStep)));
+      } else {
+        setDisplayValue(targetValue);
+        clearInterval(timer);
+      }
+    }, duration / steps);
+    
+    return () => clearInterval(timer);
+  }, [targetValue, isVisible]);
+  
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  };
+  
+  return (
+    <section 
+      ref={sectionRef}
+      className="py-32 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden"
+    >
+      {/* Background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.05),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(16,185,129,0.05),transparent_50%)]" />
+      </div>
+      
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+              ROI Calculator
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Hidden Loss</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+            See how much revenue traditional analytics are hiding from you
+          </p>
+        </div>
+        
+        {/* Calculator Card */}
+        <div className="glass-morphism-strong rounded-3xl p-10 md:p-12 border-2 border-indigo-500/20">
+          {/* Sliders */}
+          <div className="space-y-10 mb-12">
+            {/* Monthly Spend Slider */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <label className="text-lg font-semibold text-white">
+                  Monthly Ad Spend
+                </label>
+                <span className="text-2xl font-bold text-indigo-400 font-mono">
+                  {formatCurrency(spend)}
+                </span>
+              </div>
+              <input
+                type="range"
+                min="10000"
+                max="500000"
+                step="5000"
+                value={spend}
+                onChange={(e) => setSpend(parseInt(e.target.value))}
+                className="w-full h-3 rounded-full appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${((spend - 10000) / (500000 - 10000)) * 100}%, #1e293b ${((spend - 10000) / (500000 - 10000)) * 100}%, #1e293b 100%)`
+                }}
+              />
+              <div className="flex justify-between text-xs text-slate-500 mt-2 font-mono">
+                <span>$10K</span>
+                <span>$500K</span>
+              </div>
+            </div>
+            
+            {/* AOV Slider */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <label className="text-lg font-semibold text-white">
+                  Average Order Value
+                </label>
+                <span className="text-2xl font-bold text-emerald-400 font-mono">
+                  {formatCurrency(aov)}
+                </span>
+              </div>
+              <input
+                type="range"
+                min="50"
+                max="500"
+                step="10"
+                value={aov}
+                onChange={(e) => setAov(parseInt(e.target.value))}
+                className="w-full h-3 rounded-full appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #10b981 0%, #10b981 ${((aov - 50) / (500 - 50)) * 100}%, #1e293b ${((aov - 50) / (500 - 50)) * 100}%, #1e293b 100%)`
+                }}
+              />
+              <div className="flex justify-between text-xs text-slate-500 mt-2 font-mono">
+                <span>$50</span>
+                <span>$500</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Results Card */}
+          <div className="relative overflow-hidden rounded-3xl p-10 bg-gradient-to-br from-emerald-500/10 to-indigo-500/10 border-2 border-emerald-500/30">
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-indigo-500 opacity-20 blur-2xl animate-glow" />
+            
+            <div className="relative">
+              <div className="text-center mb-6">
+                <div className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-2">
+                  Estimated Annual Recovered Revenue
+                </div>
+                <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-emerald-400 mb-4 animate-[gradient-shift_3s_ease_infinite]">
+                  {formatCurrency(displayValue)}
+                </div>
+                <p className="text-slate-400 text-sm max-w-md mx-auto">
+                  This is revenue you are currently losing to attribution gaps and data loss
+                </p>
+              </div>
+              
+              {/* Breakdown */}
+              <div className="grid md:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-700/50">
+                <div className="text-center">
+                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Data Loss</div>
+                  <div className="text-2xl font-bold text-red-400">30%</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Monthly Impact</div>
+                  <div className="text-2xl font-bold text-indigo-400">{formatCurrency(recovered / 12)}</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">ROAS Lift</div>
+                  <div className="text-2xl font-bold text-emerald-400">+2.1x</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* CTA */}
+          <div className="text-center mt-10">
+            <button className="px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-bold text-lg rounded-2xl transition-all duration-300 shadow-[0_25px_70px_rgba(16,185,129,0.4)] hover:scale-105">
+              Start Recovering Revenue →
+            </button>
+            <p className="text-sm text-slate-500 mt-4">
+              No credit card required • 14-day free trial
+            </p>
+          </div>
+        </div>
+        
+        {/* Formula Explanation */}
+        <div className="mt-12 text-center">
+          <button 
+            className="text-sm text-slate-500 hover:text-slate-400 transition-colors font-mono"
+            onClick={() => alert('Formula: (Monthly Spend × 30% loss rate) × (AOV impact factor) × 12 months\n\nBased on industry average 30-40% event loss and 2.1x ROAS improvement with proper attribution.')}
+          >
+            How is this calculated? ↓
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const EchoLoop = () => {
+  const [activeFlow, setActiveFlow] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFlow(prev => (prev + 1) % 3);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  const nodes = [
+    {
+      id: 'browser',
+      icon: '🌐',
+      label: 'Browser',
+      color: 'from-emerald-500 to-emerald-600',
+      stats: { events: '2.4M/day', latency: '12ms' }
+    },
+    {
+      id: 'server',
+      icon: '⚡',
+      label: 'Server',
+      color: 'from-indigo-500 to-indigo-600',
+      stats: { sync: '99.2%', drift: '<2%' }
+    },
+    {
+      id: 'ads',
+      icon: '📢',
+      label: 'Ads Platform',
+      color: 'from-blue-500 to-blue-600',
+      stats: { replay: 'Auto', integrity: '98%' }
+    }
+  ];
+  
+  return (
+    <section className="py-32 bg-slate-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_70%)]" />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+              Hybrid Engine
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-blue-400">Echo Loop</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+            Browser ↔ Server ↔ Ads. Dual pipelines capture every event twice, deduplicate, and replay into ad networks.
+          </p>
+        </div>
+        
+        {/* Visualization */}
+        <div className="relative">
+          {/* Connection Lines - Desktop */}
+          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+            
+            {/* Animated Particles */}
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full transition-all duration-1000 ${
+                  activeFlow === i ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+                style={{
+                  left: `${i * 50}%`,
+                  background: i === 0 ? '#10b981' : i === 1 ? '#6366f1' : '#3b82f6',
+                  boxShadow: `0 0 20px ${i === 0 ? 'rgba(16,185,129,0.8)' : i === 1 ? 'rgba(99,102,241,0.8)' : 'rgba(59,130,246,0.8)'}`
+                }}
+              />
+            ))}
+          </div>
+          
+          {/* Nodes */}
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative z-10">
+            {nodes.map((node, index) => (
+              <div key={node.id} className="flex flex-col items-center">
+                {/* Node Circle */}
+                <div className={`relative w-32 h-32 md:w-40 md:h-40 rounded-3xl bg-gradient-to-br ${node.color} shadow-2xl flex items-center justify-center mb-6 transition-all duration-500 hover:scale-110 ${
+                  activeFlow === index ? 'ring-4 ring-white/30 scale-110' : ''
+                }`}>
+                  <div className="text-6xl">{node.icon}</div>
+                  
+                  {/* Pulse Effect */}
+                  {activeFlow === index && (
+                    <div className="absolute inset-0 rounded-3xl bg-white/20 animate-ping" />
+                  )}
+                </div>
+                
+                {/* Label */}
+                <h3 className="text-2xl font-bold text-white mb-4">{node.label}</h3>
+                
+                {/* Stats Card */}
+                <div className="glass-morphism rounded-2xl p-4 w-full">
+                  {Object.entries(node.stats).map(([key, value]) => (
+                    <div key={key} className="flex items-center justify-between mb-2 last:mb-0">
+                      <span className="text-xs text-slate-500 uppercase font-mono">{key}</span>
+                      <span className="text-sm font-semibold text-emerald-400 font-mono">{value}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Arrow - Mobile Only */}
+                {index < 2 && (
+                  <div className="md:hidden my-6 text-slate-600">
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          
+          {/* Process Steps */}
+          <div className="mt-16 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                step: '01',
+                title: 'Capture',
+                desc: 'Event → Identity → Verify',
+                color: 'emerald'
+              },
+              {
+                step: '02',
+                title: 'Process',
+                desc: 'Deduplicate → Normalize → Sign',
+                color: 'indigo'
+              },
+              {
+                step: '03',
+                title: 'Replay',
+                desc: 'Replay → Train → Optimize',
+                color: 'blue'
+              }
+            ].map((process, i) => (
+              <div 
+                key={process.step}
+                className={`glass-morphism rounded-2xl p-6 transition-all duration-500 ${
+                  activeFlow === i ? 'bg-white/10 scale-105' : ''
+                }`}
+              >
+                <div className={`text-sm font-mono mb-2 ${
+                  process.color === 'emerald' ? 'text-emerald-400' :
+                  process.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                }`}>
+                  STEP {process.step}
+                </div>
+                <h4 className="text-xl font-bold text-white mb-2">{process.title}</h4>
+                <p className="text-sm text-slate-400 font-mono">{process.desc}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Stats Banner */}
+          <div className="mt-16 glass-morphism-strong rounded-3xl p-8 grid md:grid-cols-4 gap-6 border-2 border-indigo-500/20">
+            {[
+              { label: 'Echo Stability', value: '97%', icon: '📊' },
+              { label: 'Latency', value: '42ms', icon: '⚡' },
+              { label: 'Sync Rate', value: '99.2%', icon: '🔄' },
+              { label: 'Auto Replay', value: 'ON', icon: '✓' }
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl mb-2">{stat.icon}</div>
+                <div className="text-3xl font-black text-white mb-1">{stat.value}</div>
+                <div className="text-xs text-slate-500 uppercase tracking-wider font-mono">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const GrowthOS = () => {
+  const tiers = [
+    {
+      id: 'tracking',
+      name: 'Tracking Layer',
+      icon: '📡',
+      color: 'emerald',
+      gradient: 'from-emerald-500/10 to-emerald-600/5',
+      borderColor: 'border-emerald-500/20',
+      features: [
+        { text: '100% Event Capture', icon: '✓' },
+        { text: 'Identity Lock™', icon: '🔐' },
+        { text: 'Real-time Sync', icon: '⚡' },
+        { text: 'Browser + Server Pipelines', icon: '🔄' }
+      ]
+    },
+    {
+      id: 'intelligence',
+      name: 'Intelligence Layer',
+      icon: '🧠',
+      color: 'indigo',
+      gradient: 'from-indigo-500/10 to-indigo-600/5',
+      borderColor: 'border-indigo-500/20',
+      features: [
+        { text: 'AI Attribution Model', icon: '🎯' },
+        { text: 'LTV Prediction', icon: '📈' },
+        { text: 'Channel Analysis', icon: '🔍' },
+        { text: 'Causal Weight Engine', icon: '⚖️' }
+      ]
+    },
+    {
+      id: 'decisions',
+      name: 'Decision Layer',
+      icon: '🚀',
+      color: 'blue',
+      gradient: 'from-blue-500/10 to-blue-600/5',
+      borderColor: 'border-blue-500/20',
+      features: [
+        { text: 'Auto Budget Optimization', icon: '💰' },
+        { text: 'Revenue Forecasting', icon: '🔮' },
+        { text: 'AI Advisor', icon: '🤖' },
+        { text: 'One-Click Actions', icon: '⚡' }
+      ]
+    }
+  ];
+  
+  return (
+    <section className="py-32 bg-slate-900 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.03),transparent_70%)]" />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider">
+              3-Tier Architecture
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+            Growth <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">OS</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+            Not just a pixel. A complete operating system for revenue intelligence and decision automation.
+          </p>
+        </div>
+        
+        {/* Bento Grid */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {tiers.map((tier) => (
+            <div
+              key={tier.id}
+              className={`glass-morphism rounded-3xl p-8 border-2 ${tier.borderColor} bg-gradient-to-br ${tier.gradient} transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${tier.color}-500/20`}
+            >
+              {/* Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${
+                  tier.color === 'emerald' ? 'from-emerald-500 to-emerald-600' :
+                  tier.color === 'indigo' ? 'from-indigo-500 to-indigo-600' : 'from-blue-500 to-blue-600'
+                } flex items-center justify-center text-3xl shadow-lg`}>
+                  {tier.icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">{tier.name}</h3>
+                  <div className={`text-xs font-mono uppercase tracking-wider ${
+                    tier.color === 'emerald' ? 'text-emerald-400' :
+                    tier.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                  }`}>
+                    Layer {tier.id === 'tracking' ? '01' : tier.id === 'intelligence' ? '02' : '03'}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Features */}
+              <div className="space-y-4">
+                {tier.features.map((feature, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 group"
+                  >
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${
+                      tier.color === 'emerald' ? 'from-emerald-500/20 to-emerald-600/10' :
+                      tier.color === 'indigo' ? 'from-indigo-500/20 to-indigo-600/10' : 'from-blue-500/20 to-blue-600/10'
+                    } flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
+                      <span className="text-sm">{feature.icon}</span>
+                    </div>
+                    <span className="text-slate-300 group-hover:text-white transition-colors duration-300">
+                      {feature.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Bottom Badge */}
+              <div className={`mt-8 pt-6 border-t ${
+                tier.color === 'emerald' ? 'border-emerald-500/10' :
+                tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10'
+              }`}>
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">
+                  Status: <span className={`${
+                    tier.color === 'emerald' ? 'text-emerald-400' :
+                    tier.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                  } font-bold`}>Active</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Integration Diagram */}
+        <div className="mt-16 glass-morphism-strong rounded-3xl p-8 border-2 border-slate-700/50">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex-1 text-center md:text-left">
+              <h4 className="text-2xl font-bold text-white mb-2">Unified Intelligence</h4>
+              <p className="text-slate-400">All three layers work in concert, feeding data upward and actions downward.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                  <span className="text-xl">📡</span>
+                </div>
+                <div className="text-xs text-slate-500 font-mono">Track</div>
+              </div>
+              <div className="text-slate-600 text-2xl">→</div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                  <span className="text-xl">🧠</span>
+                </div>
+                <div className="text-xs text-slate-500 font-mono">Analyze</div>
+              </div>
+              <div className="text-slate-600 text-2xl">→</div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
+                  <span className="text-xl">🚀</span>
+                </div>
+                <div className="text-xs text-slate-500 font-mono">Act</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const Testimonials = () => {
+  const testimonials = [
+    {
+      quote: "Fixel revealed 42% of revenue we didn't know existed. Our Google Ads ROAS went from 2.1x to 4.3x in 60 days.",
+      name: "Sarah Chen",
+      role: "CMO",
+      company: "NovaTech",
+      avatar: "👩‍💼",
+      stat: "+105% ROAS"
+    },
+    {
+      quote: "We were flying blind with modeled conversions. Fixel showed us our actual customer journey—game changer.",
+      name: "Marcus Williams",
+      role: "Growth Lead",
+      company: "Stride Footwear",
+      avatar: "👨‍💻",
+      stat: "$1.2M Recovered"
+    },
+    {
+      quote: "The Echo Loop is genius. We finally trust our attribution data. No more guessing, just facts.",
+      name: "Elena Rodriguez",
+      role: "CEO",
+      company: "BeautyBox",
+      avatar: "👩‍🔬",
+      stat: "99.2% Sync Rate"
+    },
+    {
+      quote: "Identity Lock changed everything. We can track users across iOS Safari, sessions, even after cookie deletion.",
+      name: "Tom Anderson",
+      role: "Data Director",
+      company: "HomeGoods Plus",
+      avatar: "👨‍🎓",
+      stat: "87% iOS Coverage"
+    }
+  ];
+  
+  return (
+    <section className="py-32 bg-slate-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.03),transparent_70%)]" />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+              Social Proof
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+            Built by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Practitioners</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+            Trusted by growth teams who refuse to waste ad spend on broken attribution.
+          </p>
+        </div>
+        
+        {/* Testimonial Grid */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {testimonials.map((testimonial, i) => (
+            <div
+              key={i}
+              className="glass-morphism rounded-3xl p-8 border border-slate-700/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-500/30"
+            >
+              {/* Quote */}
+              <div className="mb-6">
+                <div className="text-6xl text-indigo-500/20 mb-4 leading-none">"</div>
+                <p className="text-lg text-slate-300 leading-relaxed">
+                  {testimonial.quote}
+                </p>
+              </div>
+              
+              {/* Author */}
+              <div className="flex items-center justify-between border-t border-slate-700/50 pt-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/10 flex items-center justify-center text-3xl">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <div className="font-bold text-white">{testimonial.name}</div>
+                    <div className="text-sm text-slate-500">
+                      {testimonial.role}, {testimonial.company}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Stat Badge */}
+                <div className="glass-morphism px-4 py-2 rounded-xl border border-emerald-500/20">
+                  <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Result</div>
+                  <div className="text-sm font-bold text-emerald-400">{testimonial.stat}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* CTA Banner */}
+        <div className="mt-16 glass-morphism-strong rounded-3xl p-12 text-center border-2 border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-blue-500/5">
+          <h3 className="text-4xl font-black text-white mb-4">
+            Join 200+ Growth Teams
+          </h3>
+          <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+            Stop guessing. Start growing with AI-powered attribution that actually works.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+              Start Free Trial →
+            </button>
+            <button className="px-8 py-4 glass-morphism text-white font-bold rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105">
+              Book a Demo
+            </button>
+          </div>
+          <div className="mt-6 flex items-center justify-center gap-8 text-sm text-slate-500">
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>No credit card</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>14-day free trial</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400">✓</span>
+              <span>Cancel anytime</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const FinalCTA = ({ TrialFormButton, DemoFormButton }) => {
+  return (
+    <section className="py-32 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]" />
+      
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="glass-morphism-strong rounded-3xl p-12 md:p-16 text-center border-2 border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-xs font-mono text-emerald-300 tracking-wider uppercase">
+              Limited Time Offer
+            </span>
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6">
+            Ready to See the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Truth</span>?
+          </h2>
+          
+          <p className="text-lg sm:text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+            Join 2,000+ growth teams who stopped guessing and started growing with AI-powered attribution.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <TrialFormButton location="final_cta" />
+            <DemoFormButton location="final_cta" variant="secondary" />
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400 text-lg">✓</span>
+              <span>14-day free trial</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400 text-lg">✓</span>
+              <span>No credit card required</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400 text-lg">✓</span>
+              <span>Setup in 5 minutes</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400 text-lg">✓</span>
+              <span>Cancel anytime</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+    const Footer = () => {
+  return (
+    <footer role="contentinfo" className="bg-slate-950 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <span className="text-2xl">✓</span>
+              </div>
+              <span className="text-2xl font-black text-white">Fixel</span>
+            </div>
+            <p className="text-slate-400 text-sm mb-6">
+              The AI Truth Layer for eCommerce attribution. Stop losing revenue to broken analytics.
+            </p>
+            <div className="flex items-center gap-4">
+              <a href="#" aria-label="Twitter" className="text-slate-500 hover:text-emerald-400 transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" className="text-slate-500 hover:text-emerald-400 transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="GitHub" className="text-slate-500 hover:text-emerald-400 transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          {/* Product Column */}
+          <div>
+            <h3 className="text-white font-bold mb-4">Product</h3>
+            <ul className="space-y-3">
+              <li><a href="#features" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#pricing" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Pricing</a></li>
+              <li><a href="#integrations" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Integrations</a></li>
+              <li><a href="#changelog" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Changelog</a></li>
+              <li><a href="#roadmap" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Roadmap</a></li>
+            </ul>
+          </div>
+          
+          {/* Resources Column */}
+          <div>
+            <h3 className="text-white font-bold mb-4">Resources</h3>
+            <ul className="space-y-3">
+              <li><a href="#docs" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Documentation</a></li>
+              <li><a href="#blog" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Blog</a></li>
+              <li><a href="#guides" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Guides</a></li>
+              <li><a href="#case-studies" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Case Studies</a></li>
+              <li><a href="#support" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          
+          {/* Company Column */}
+          <div>
+            <h3 className="text-white font-bold mb-4">Company</h3>
+            <ul className="space-y-3">
+              <li><a href="#about" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">About Us</a></li>
+              <li><a href="#careers" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#partners" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Partners</a></li>
+              <li><a href="#privacy" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#terms" className="text-slate-400 hover:text-emerald-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        {/* Bottom Bar */}
+        <div className="py-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-slate-500 text-sm">
+            © 2025 Fixel Pixel Inc. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-sm">
+            <span className="text-slate-600">Built with ❤️ by practitioners</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-emerald-400 font-mono">All systems operational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+    // ==================== APP ====================
+    // Information Gravity Graph Component
+const InformationGravityGraph = ({ theme }) => {
+  const canvasRef = useRef(null);
+  
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio;
+    canvas.height = rect.height * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const palette = theme === 'light'
+      ? {
+          coreStroke: '#047857',
+          text: '#0f172a',
+          surface: 'rgba(255,255,255,0.9)',
+          lineBase: 'rgba(16,185,129,0.45)',
+        }
+      : {
+          coreStroke: '#10b981',
+          text: '#ffffff',
+          surface: 'rgba(15,23,42,0.9)',
+          lineBase: 'rgba(16,185,129,0.3)',
+        };
+
+    const nodes = [
+      { label: 'Meta', weight: 0.45, angle: 0, color: '#6366f1', x: 0, y: 0 },
+      { label: 'TikTok', weight: 0.38, angle: Math.PI / 2, color: '#10b981', x: 0, y: 0 },
+      { label: 'Google', weight: 0.31, angle: Math.PI, color: '#3b82f6', x: 0, y: 0 },
+      { label: 'Email', weight: 0.27, angle: 3 * Math.PI / 2, color: '#f59e0b', x: 0, y: 0 }
+    ];
+    
+    let frame = 0;
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      frame += 0.005;
+      
+      // Draw connections to center
+      nodes.forEach((node, i) => {
+        const radius = 120 + Math.sin(frame + i) * 10;
+        const angle = node.angle + frame * 0.3;
+        node.x = centerX + Math.cos(angle) * radius;
+        node.y = centerY + Math.sin(angle) * radius;
+        
+        // Draw connection line
+        const gradient = ctx.createLinearGradient(centerX, centerY, node.x, node.y);
+        gradient.addColorStop(0, palette.lineBase);
+        gradient.addColorStop(1, node.color + '80');
+        
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = node.weight * 4;
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(node.x, node.y);
+        ctx.stroke();
+        
+        // Draw flow particles
+        for (let j = 0; j < 3; j++) {
+          const t = ((frame * 2 + j * 0.33) % 1);
+          const px = centerX + (node.x - centerX) * t;
+          const py = centerY + (node.y - centerY) * t;
+          
+          ctx.fillStyle = node.color;
+          ctx.globalAlpha = 1 - t;
+          ctx.beginPath();
+          ctx.arc(px, py, 3, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      });
+      
+      // Draw center core
+      const coreGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 40);
+      coreGradient.addColorStop(0, theme === 'light' ? 'rgba(16,185,129,0.35)' : 'rgba(16, 185, 129, 0.4)');
+      coreGradient.addColorStop(0.5, theme === 'light' ? 'rgba(99, 102, 241, 0.12)' : 'rgba(99, 102, 241, 0.2)');
+      coreGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      
+      ctx.fillStyle = coreGradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 40 + Math.sin(frame * 2) * 5, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Draw center circle
+      ctx.strokeStyle = palette.coreStroke;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 30, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      // Draw nodes
+      nodes.forEach(node => {
+        // Node glow
+        const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 25);
+        glowGradient.addColorStop(0, node.color + '60');
+        glowGradient.addColorStop(1, 'transparent');
+        
+        ctx.fillStyle = glowGradient;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 25, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Node circle
+        ctx.fillStyle = palette.surface;
+        ctx.strokeStyle = node.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 20, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        
+        // Node label
+        ctx.fillStyle = palette.text;
+        ctx.font = '600 12px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText(node.label, node.x, node.y - 35);
+        
+        // Weight label
+        ctx.fillStyle = node.color;
+        ctx.font = '500 10px JetBrains Mono';
+        ctx.fillText(`${node.weight}`, node.x, node.y + 40);
+      });
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+  }, []);
+  
+  return (
+    <div className="relative w-full h-[500px] rounded-3xl overflow-hidden bg-surface-override border border-surface-line">
+      <canvas ref={canvasRef} className="w-full h-full" />
+      
+      {/* Legend */}
+      <div className="absolute top-4 right-4 glass-morphism rounded-2xl p-4 space-y-2">
+        <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">Attribution Weight</div>
+        <div className="flex items-center gap-2 text-sm">
+          <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
+          <span className="text-slate-300">Paid Social</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+          <span className="text-slate-300">Organic</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+          <span className="text-slate-300">Search</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+          <span className="text-slate-300">Retention</span>
+        </div>
+      </div>
+      
+      {/* Stats */}
+      <div className="absolute bottom-4 left-4 right-4 flex justify-between">
+        <StatBadge label="Causal Confidence" value="99.1%" />
+        <StatBadge label="Identity Match" value="98.4%" />
+        <StatBadge label="Attribution Lift" value="+18%" />
+      </div>
+    </div>
+  );
+};
+
+const StatBadge = ({ label, value }) => (
+  <div className="glass-morphism rounded-xl px-4 py-2">
+    <div className="text-xs font-mono text-slate-500">{label}</div>
+    <div className="text-lg font-bold text-emerald-400">{value}</div>
+  </div>
+);
+
+const App = () => {
+  const [isDark, setIsDark] = useState(true);
+  
+  const toggleTheme = () => setIsDark(!isDark);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  return (
+    <div className={`min-h-screen transition-colors duration-300 ${
+      isDark ? 'bg-slate-950' : 'bg-white'
+    }`}>
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+      <main role="main">
+        <Hero TrialFormButton={TrialFormButton} />
+        <ScrollytellingProblem />
+        <RealitySwitch />
+        <LossCalculator />
+        <EchoLoop />
+        <GrowthOS />
+        <Testimonials />
+        
+        {/* AI Attribution Engine Section */}
+        <section className="py-24 bg-slate-900" aria-label="AI Attribution Engine">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-4">
+                <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+                  AI Attribution Engine
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+                Information Gravity Graph
+              </h2>
+              <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
+                Every channel becomes a node. We weigh causal pull, illuminate edges, and surface true revenue gravity.
+              </p>
+            </div>
+            
+            <InformationGravityGraph theme={isDark ? 'dark' : 'light'} />
+          </div>
+        </section>
+        
+        <FinalCTA TrialFormButton={TrialFormButton} DemoFormButton={DemoFormButton} />
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+    // ==================== RENDER ====================
+    const { createRoot } = ReactDOM;
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+  <!-- Performance Monitoring -->
+  <script>
+    // Log Web Vitals to console (replace with your analytics endpoint)
+    if ('PerformanceObserver' in window) {
+      // Largest Contentful Paint
+      const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        console.log('LCP:', lastEntry.renderTime || lastEntry.loadTime);
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+      // First Input Delay
+      const fidObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          console.log('FID:', entry.processingStart - entry.startTime);
+        }
+      });
+      fidObserver.observe({ entryTypes: ['first-input'] });
+
+      // Cumulative Layout Shift
+      let clsValue = 0;
+      const clsObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+            console.log('CLS:', clsValue);
+          }
+        }
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'] });
+    }
+  </script>
+
+</body>
+</html>
