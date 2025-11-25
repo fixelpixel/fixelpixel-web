@@ -65,10 +65,14 @@ export const GrowthOS = ({ isDark = true }) => {
               3-Tier Architecture
             </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
             Growth <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">OS</span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+          <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
+            isDark ? 'text-slate-400' : 'text-slate-600'
+          }`}>
             Not just a pixel. A complete operating system for revenue intelligence and decision automation.
           </p>
         </div>
@@ -78,7 +82,11 @@ export const GrowthOS = ({ isDark = true }) => {
           {tiers.map((tier) => (
             <div
               key={tier.id}
-              className={`glass-morphism rounded-3xl p-8 border-2 ${tier.borderColor} bg-gradient-to-br ${tier.gradient} transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-${tier.color}-500/20`}
+              className={`rounded-3xl p-8 border-2 transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
+                isDark 
+                  ? `glass-morphism ${tier.borderColor} bg-gradient-to-br ${tier.gradient} hover:shadow-${tier.color}-500/20`
+                  : `bg-white border-slate-100 shadow-xl hover:shadow-${tier.color}-500/10`
+              }`}
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
@@ -89,10 +97,13 @@ export const GrowthOS = ({ isDark = true }) => {
                   {tier.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">{tier.name}</h3>
+                  <h3 className={`text-2xl font-bold ${
+                    isDark ? 'text-white' : 'text-slate-900'
+                  }`}>{tier.name}</h3>
                   <div className={`text-xs font-mono uppercase tracking-wider ${
-                    tier.color === 'emerald' ? 'text-emerald-400' :
-                    tier.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                    tier.color === 'emerald' ? (isDark ? 'text-emerald-400' : 'text-emerald-600') :
+                    tier.color === 'indigo' ? (isDark ? 'text-indigo-400' : 'text-indigo-600') : 
+                    (isDark ? 'text-blue-400' : 'text-blue-600')
                   }`}>
                     Layer {tier.id === 'tracking' ? '01' : tier.id === 'intelligence' ? '02' : '03'}
                   </div>
@@ -110,9 +121,13 @@ export const GrowthOS = ({ isDark = true }) => {
                       tier.color === 'emerald' ? 'from-emerald-500/20 to-emerald-600/10' :
                       tier.color === 'indigo' ? 'from-indigo-500/20 to-indigo-600/10' : 'from-blue-500/20 to-blue-600/10'
                     } flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
-                      <span className="text-sm">{feature.icon}</span>
+                      <span className={`text-sm ${
+                        isDark ? 'text-white' : 'text-slate-700'
+                      }`}>{feature.icon}</span>
                     </div>
-                    <span className="text-slate-300 group-hover:text-white transition-colors duration-300">
+                    <span className={`${
+                      isDark ? 'text-slate-300 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'
+                    } transition-colors duration-300`}>
                       {feature.text}
                     </span>
                   </div>
@@ -121,13 +136,15 @@ export const GrowthOS = ({ isDark = true }) => {
               
               {/* Bottom Badge */}
               <div className={`mt-8 pt-6 border-t ${
-                tier.color === 'emerald' ? 'border-emerald-500/10' :
-                tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10'
+                isDark 
+                  ? (tier.color === 'emerald' ? 'border-emerald-500/10' : tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10')
+                  : 'border-slate-100'
               }`}>
                 <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">
                   Status: <span className={`${
-                    tier.color === 'emerald' ? 'text-emerald-400' :
-                    tier.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                    tier.color === 'emerald' ? (isDark ? 'text-emerald-400' : 'text-emerald-600') :
+                    tier.color === 'indigo' ? (isDark ? 'text-indigo-400' : 'text-indigo-600') : 
+                    (isDark ? 'text-blue-400' : 'text-blue-600')
                   } font-bold`}>Active</span>
                 </div>
               </div>
@@ -136,11 +153,19 @@ export const GrowthOS = ({ isDark = true }) => {
         </div>
         
         {/* Integration Diagram */}
-        <div className="mt-16 glass-morphism-strong rounded-3xl p-8 border-2 border-slate-700/50">
+        <div className={`mt-16 rounded-3xl p-8 border-2 ${
+          isDark 
+            ? 'glass-morphism-strong border-slate-700/50' 
+            : 'bg-white border-slate-200 shadow-xl'
+        }`}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex-1 text-center md:text-left">
-              <h4 className="text-2xl font-bold text-white mb-2">Unified Intelligence</h4>
-              <p className="text-slate-400">All three layers work in concert, feeding data upward and actions downward.</p>
+              <h4 className={`text-2xl font-bold mb-2 ${
+                isDark ? 'text-white' : 'text-slate-900'
+              }`}>Unified Intelligence</h4>
+              <p className={`${
+                isDark ? 'text-slate-400' : 'text-slate-600'
+              }`}>All three layers work in concert, feeding data upward and actions downward.</p>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center gap-2">
