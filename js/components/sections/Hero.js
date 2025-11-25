@@ -152,7 +152,8 @@ const LiveChart = () => {
 
 export const Hero = ({ TrialFormButton, isDark = true }) => {
   const canvasRef = useRef(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  // Use useRef for mouse position to avoid re-renders and improve performance
+  const mousePos = useRef({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -218,9 +219,14 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
       particles.rotation.y += 0.0005;
       particles.rotation.x += 0.0002;
       
-      // Mouse parallax effect
-      camera.position.x = mousePos.x * 0.0005;
-      camera.position.y = -mousePos.y * 0.0005;
+      // Smoother Mouse parallax effect with Lerp (Linear Interpolation)
+      // Reduced sensitivity (0.0002 instead of 0.0005)
+      const targetX = mousePos.current.x * 0.0002;
+      const targetY = -mousePos.current.y * 0.0002;
+      
+      // Apply smoothing (0.05 is the damping factor - lower is smoother/slower)
+      camera.position.x += (targetX - camera.position.x) * 0.05;
+      camera.position.y += (targetY - camera.position.y) * 0.05;
       
       renderer.render(scene, camera);
     };
@@ -242,12 +248,16 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
       particlesMaterial.dispose();
       renderer.dispose();
     };
-  }, [mousePos, isDark]);
+  }, [isDark]); // Removed mousePos from dependencies to prevent re-renders
   
   // Mouse tracking
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX - window.innerWidth / 2, y: e.clientY - window.innerHeight / 2 });
+      // Update ref directly
+      mousePos.current = { 
+        x: e.clientX - window.innerWidth / 2, 
+        y: e.clientY - window.innerHeight / 2 
+      };
     };
     
     window.addEventListener('mousemove', handleMouseMove);
