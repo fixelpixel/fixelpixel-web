@@ -200,12 +200,12 @@ export const App = () => {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
-      isDark ? 'bg-slate-950' : 'bg-white'
+      isDark ? 'bg-slate-950' : 'bg-slate-50'
     }`}>
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <main role="main">
-        <Hero TrialFormButton={TrialFormButton} />
-        <ScrollytellingProblem />
+        <Hero TrialFormButton={TrialFormButton} isDark={isDark} />
+        <ScrollytellingProblem isDark={isDark} />
         <RealitySwitch />
         <LossCalculator />
         <EchoLoop />
@@ -213,18 +213,28 @@ export const App = () => {
         <Testimonials />
         
         {/* AI Attribution Engine Section */}
-        <section className="py-24 bg-slate-900" aria-label="AI Attribution Engine">
+        <section className={`py-24 ${
+          isDark ? 'bg-slate-900' : 'bg-white'
+        }`} aria-label="AI Attribution Engine">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-4">
-                <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 ${
+                isDark ? 'glass-morphism' : 'glass-morphism-light'
+              }`}>
+                <span className={`text-xs font-mono uppercase tracking-wider ${
+                  isDark ? 'text-indigo-400' : 'text-indigo-700'
+                }`}>
                   AI Attribution Engine
                 </span>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+              <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${
+                isDark ? 'text-white' : 'text-slate-900'
+              }`}>
                 Information Gravity Graph
               </h2>
-              <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
+              <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${
+                isDark ? 'text-slate-400' : 'text-slate-600'
+              }`}>
                 Every channel becomes a node. We weigh causal pull, illuminate edges, and surface true revenue gravity.
               </p>
             </div>
@@ -236,7 +246,7 @@ export const App = () => {
         <FinalCTA TrialFormButton={TrialFormButton} DemoFormButton={DemoFormButton} />
       </main>
       
-      <Footer />
+      <Footer isDark={isDark} />
     </div>
   );
 };

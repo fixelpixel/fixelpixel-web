@@ -51,7 +51,7 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
         className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-300 ${
           isDark 
             ? 'bg-slate-950/80 border-slate-800/50' 
-            : 'bg-white/80 border-slate-200'
+            : 'bg-white/90 border-slate-200/60 shadow-sm'
         }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -66,7 +66,11 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-slate-400 hover:text-white transition-colors font-medium"
+                  className={`transition-colors font-medium ${
+                    isDark
+                      ? 'text-slate-400 hover:text-white'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -106,12 +110,20 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
               )}
               <button
                 onClick={() => trackEvent('click_signin', { location: 'navbar' })}
-                className="px-6 py-2 text-white font-semibold hover:text-emerald-400 transition-colors">
+                className={`px-6 py-2 font-semibold transition-colors ${
+                  isDark
+                    ? 'text-white hover:text-emerald-400'
+                    : 'text-slate-700 hover:text-emerald-700'
+                }`}>
                 Sign In
               </button>
               <button
                 onClick={() => trackEvent('click_start_trial', { location: 'navbar' })}
-                className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+                className={`px-6 py-2 font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105 ${
+                  isDark
+                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:shadow-emerald-500/50 text-white'
+                    : 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:shadow-emerald-600/30 text-white'
+                }`}>
                 Start Free →
               </button>
             </div>
@@ -119,7 +131,11 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="md:hidden w-10 h-10 flex items-center justify-center text-white hover:text-emerald-400 transition-colors"
+              className={`md:hidden w-10 h-10 flex items-center justify-center transition-colors ${
+                isDark
+                  ? 'text-white hover:text-emerald-400'
+                  : 'text-slate-700 hover:text-emerald-700'
+              }`}
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
             >
@@ -136,7 +152,11 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed top-0 right-0 h-full w-80 bg-slate-950 border-l border-slate-800 z-50 transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-80 border-l z-50 transition-transform duration-300 ${
+          isDark
+            ? 'bg-slate-950 border-slate-800'
+            : 'bg-white border-slate-200 shadow-2xl'
+        } ${
           menuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -145,7 +165,11 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
           <div className="flex justify-end mb-8">
             <button
               onClick={() => setMenuOpen(false)}
-              className="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+              className={`w-10 h-10 flex items-center justify-center transition-colors ${
+                isDark
+                  ? 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
               aria-label="Close navigation menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -161,7 +185,11 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block text-2xl font-bold text-slate-400 hover:text-white transition-colors"
+                className={`block text-2xl font-bold transition-colors ${
+                  isDark
+                    ? 'text-slate-400 hover:text-white'
+                    : 'text-slate-700 hover:text-slate-900'
+                }`}
               >
                 {link.label}
               </a>
@@ -172,13 +200,21 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
           <div className="mt-12 space-y-4">
             <button
               onClick={() => setMenuOpen(false)}
-              className="w-full px-6 py-3 text-white font-semibold border border-slate-700 rounded-xl hover:border-slate-600 transition-colors"
+              className={`w-full px-6 py-3 font-semibold border rounded-xl transition-colors ${
+                isDark
+                  ? 'text-white border-slate-700 hover:border-slate-600'
+                  : 'text-slate-700 border-slate-300 hover:border-slate-400 hover:bg-slate-50'
+              }`}
             >
               Sign In
             </button>
             <button
               onClick={() => setMenuOpen(false)}
-              className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg"
+              className={`w-full px-6 py-3 font-semibold rounded-xl shadow-lg ${
+                isDark
+                  ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white'
+                  : 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white'
+              }`}
             >
               Start Free →
             </button>
@@ -189,7 +225,9 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
       {/* Backdrop */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+          className={`fixed inset-0 backdrop-blur-sm z-40 ${
+            isDark ? 'bg-black/60' : 'bg-black/40'
+          }`}
           onClick={() => setMenuOpen(false)}
           aria-hidden="true"
         />

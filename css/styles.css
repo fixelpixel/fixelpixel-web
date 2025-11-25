@@ -94,10 +94,27 @@ body {
   animation: shimmer 3s infinite;
 }
 
+/* Glass Morphism - Dark Mode */
 .glass-morphism {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-morphism-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Morphism - Light Mode */
+.glass-morphism-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
 .text-gradient {
