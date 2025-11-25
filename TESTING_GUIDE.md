@@ -138,7 +138,7 @@ Open console and verify these events are tracked:
 - Calculations should be accurate
 - Annual/monthly toggle should work
 
-**Echo Loop:**
+**Dual-Pipeline Sync:**
 - Particles should flow between nodes
 - Animation should loop continuously
 - Should be visible but not distracting

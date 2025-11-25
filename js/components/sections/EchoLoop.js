@@ -56,7 +56,7 @@ export const EchoLoop = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-blue-400">Echo Loop</span>
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-blue-400">Dual-Pipeline Sync</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'

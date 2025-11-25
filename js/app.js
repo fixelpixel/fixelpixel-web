@@ -9,11 +9,12 @@ import { LossCalculator } from './components/sections/LossCalculator.js';
 import { EchoLoop } from './components/sections/EchoLoop.js';
 import { GrowthOS } from './components/sections/GrowthOS.js';
 import { Testimonials } from './components/sections/Testimonials.js';
+import { IntegrationSteps } from './components/sections/IntegrationSteps.js';
 import { FinalCTA } from './components/sections/FinalCTA.js';
 import { Footer } from './components/sections/Footer.js';
 
-// Information Gravity Graph Component
-const InformationGravityGraph = ({ theme }) => {
+// Causal Impact Analysis Component
+const CausalImpactAnalysis = ({ theme }) => {
   const canvasRef = useRef(null);
   
   useEffect(() => {
@@ -230,7 +231,7 @@ export const App = () => {
               <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${
                 isDark ? 'text-white' : 'text-slate-900'
               }`}>
-                Information Gravity Graph
+                Causal Impact Analysis
               </h2>
               <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${
                 isDark ? 'text-slate-400' : 'text-slate-600'
@@ -239,9 +240,11 @@ export const App = () => {
               </p>
             </div>
             
-            <InformationGravityGraph theme={isDark ? 'dark' : 'light'} />
+            <CausalImpactAnalysis theme={isDark ? 'dark' : 'light'} />
           </div>
         </section>
+        
+        <IntegrationSteps isDark={isDark} />
         
         <FinalCTA TrialFormButton={TrialFormButton} DemoFormButton={DemoFormButton} isDark={isDark} />
       </main>

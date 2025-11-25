@@ -154,7 +154,7 @@ These are blocking tasks that must be done first:
 ### 🟡 HIGH (Do Next)
 Important for polish and UX:
 
-6. **TASK-004:** Echo Loop Visualization (2.5h)
+6. **TASK-004:** Dual-Pipeline Sync Visualization (2.5h)
 7. **TASK-005:** Growth OS Bento Grid (1.5h)
 8. **TASK-009:** Performance Optimization (2h)
 9. **TASK-011:** Accessibility Audit (2h)

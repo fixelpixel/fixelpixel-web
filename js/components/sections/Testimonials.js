@@ -19,7 +19,7 @@ export const Testimonials = ({ isDark = true }) => {
       stat: "$1.2M Recovered"
     },
     {
-      quote: "The Echo Loop is genius. We finally trust our attribution data. No more guessing, just facts.",
+      quote: "The Dual-Pipeline Sync is genius. We finally trust our attribution data. No more guessing, just facts.",
       name: "Elena Rodriguez",
       role: "CEO",
       company: "BeautyBox",

@@ -49,6 +49,7 @@ const calculator = extractComponent(readFile('js/components/sections/LossCalcula
 const echoLoop = extractComponent(readFile('js/components/sections/EchoLoop.js'));
 const growthOS = extractComponent(readFile('js/components/sections/GrowthOS.js'));
 const testimonials = extractComponent(readFile('js/components/sections/Testimonials.js'));
+const integrationSteps = extractComponent(readFile('js/components/sections/IntegrationSteps.js'));
 const finalCTA = extractComponent(readFile('js/components/sections/FinalCTA.js'));
 const footer = extractComponent(readFile('js/components/sections/Footer.js'));
 
@@ -181,6 +182,7 @@ ${readFile('css/styles.css')}
     ${echoLoop}
     ${growthOS}
     ${testimonials}
+    ${integrationSteps}
     ${finalCTA}
     ${footer}
 
