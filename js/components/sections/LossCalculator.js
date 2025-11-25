@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-export const LossCalculator = () => {
+export const LossCalculator = ({ isDark = true }) => {
   const [spend, setSpend] = useState(50000);
   const [aov, setAov] = useState(150);
   const [isVisible, setIsVisible] = useState(false);
@@ -67,7 +67,11 @@ export const LossCalculator = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-32 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden"
+      className={`py-32 relative overflow-hidden ${
+        isDark
+          ? 'bg-gradient-to-b from-slate-900 to-slate-950'
+          : 'bg-gradient-to-b from-slate-50 to-white'
+      }`}
     >
       {/* Background elements */}
       <div className="absolute inset-0">
@@ -78,21 +82,31 @@ export const LossCalculator = () => {
       <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
-            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+            isDark ? 'glass-morphism' : 'glass-morphism-light'
+          }`}>
+            <span className={`text-xs font-mono uppercase tracking-wider ${
+              isDark ? 'text-indigo-400' : 'text-indigo-700'
+            }`}>
               ROI Calculator
             </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
             Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Hidden Loss</span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+          <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
+            isDark ? 'text-slate-400' : 'text-slate-600'
+          }`}>
             See how much revenue traditional analytics are hiding from you
           </p>
         </div>
         
         {/* Calculator Card */}
-        <div className="glass-morphism-strong rounded-3xl p-10 md:p-12 border-2 border-indigo-500/20">
+        <div className={`rounded-3xl p-10 md:p-12 border-2 border-indigo-500/20 ${
+          isDark ? 'glass-morphism-strong' : 'bg-white shadow-xl'
+        }`}>
           {/* Sliders */}
           <div className="space-y-10 mb-12">
             {/* Monthly Spend Slider */}

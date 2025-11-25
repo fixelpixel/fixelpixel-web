@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Testimonials = () => {
+export const Testimonials = ({ isDark = true }) => {
   const testimonials = [
     {
       quote: "Fixel revealed 42% of revenue we didn't know existed. Our Google Ads ROAS went from 2.1x to 4.3x in 60 days.",
@@ -37,7 +37,9 @@ export const Testimonials = () => {
   ];
   
   return (
-    <section className="py-32 bg-slate-950 relative overflow-hidden">
+    <section className={`py-32 relative overflow-hidden ${
+      isDark ? 'bg-slate-950' : 'bg-white'
+    }`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.03),transparent_70%)]" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">

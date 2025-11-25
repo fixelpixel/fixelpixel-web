@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export const EchoLoop = () => {
+export const EchoLoop = ({ isDark = true }) => {
   const [activeFlow, setActiveFlow] = useState(0);
   
   useEffect(() => {
@@ -35,22 +35,32 @@ export const EchoLoop = () => {
   ];
   
   return (
-    <section className="py-32 bg-slate-950 relative overflow-hidden">
+    <section className={`py-32 relative overflow-hidden ${
+      isDark ? 'bg-slate-950' : 'bg-white'
+    }`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_70%)]" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+            isDark ? 'glass-morphism' : 'glass-morphism-light'
+          }`}>
             <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+            <span className={`text-xs font-mono uppercase tracking-wider ${
+              isDark ? 'text-indigo-400' : 'text-indigo-700'
+            }`}>
               Hybrid Engine
             </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6">
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
             The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-blue-400">Echo Loop</span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto">
+          <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
+            isDark ? 'text-slate-400' : 'text-slate-600'
+          }`}>
             Browser ↔ Server ↔ Ads. Dual pipelines capture every event twice, deduplicate, and replay into ad networks.
           </p>
         </div>

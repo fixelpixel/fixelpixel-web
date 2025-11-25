@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const GrowthOS = () => {
+export const GrowthOS = ({ isDark = true }) => {
   const tiers = [
     {
       id: 'tracking',
@@ -47,15 +47,21 @@ export const GrowthOS = () => {
   ];
   
   return (
-    <section className="py-32 bg-slate-900 relative overflow-hidden">
+    <section className={`py-32 relative overflow-hidden ${
+      isDark ? 'bg-slate-900' : 'bg-slate-50'
+    }`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.03),transparent_70%)]" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+            isDark ? 'glass-morphism' : 'glass-morphism-light'
+          }`}>
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider">
+            <span className={`text-xs font-mono uppercase tracking-wider ${
+              isDark ? 'text-emerald-400' : 'text-emerald-700'
+            }`}>
               3-Tier Architecture
             </span>
           </div>

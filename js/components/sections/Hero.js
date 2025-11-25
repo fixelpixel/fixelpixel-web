@@ -411,14 +411,6 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
                 <div className={isDark ? 'text-slate-500' : 'text-slate-600'}>Revenue Recovered</div>
               </div>
             </div>
-                <div className="text-slate-500 font-mono">Shopify Stores</div>
-              </div>
-              <div className="w-px h-12 bg-slate-800"></div>
-              <div className="text-sm">
-                <div className="text-xl sm:text-2xl font-bold text-emerald-400">$1B+</div>
-                <div className="text-slate-500 font-mono">Tracked Revenue</div>
-              </div>
-            </div>
           </div>
           
           {/* Right Column - Interactive Dashboard */}

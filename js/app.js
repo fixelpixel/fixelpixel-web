@@ -206,11 +206,11 @@ export const App = () => {
       <main role="main">
         <Hero TrialFormButton={TrialFormButton} isDark={isDark} />
         <ScrollytellingProblem isDark={isDark} />
-        <RealitySwitch />
-        <LossCalculator />
-        <EchoLoop />
-        <GrowthOS />
-        <Testimonials />
+        <RealitySwitch isDark={isDark} />
+        <LossCalculator isDark={isDark} />
+        <EchoLoop isDark={isDark} />
+        <GrowthOS isDark={isDark} />
+        <Testimonials isDark={isDark} />
         
         {/* AI Attribution Engine Section */}
         <section className={`py-24 ${
@@ -243,7 +243,7 @@ export const App = () => {
           </div>
         </section>
         
-        <FinalCTA TrialFormButton={TrialFormButton} DemoFormButton={DemoFormButton} />
+        <FinalCTA TrialFormButton={TrialFormButton} DemoFormButton={DemoFormButton} isDark={isDark} />
       </main>
       
       <Footer isDark={isDark} />

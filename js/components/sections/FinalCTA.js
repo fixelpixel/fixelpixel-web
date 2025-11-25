@@ -1,27 +1,41 @@
 import React from 'react';
 
-export const FinalCTA = ({ TrialFormButton, DemoFormButton }) => {
+export const FinalCTA = ({ TrialFormButton, DemoFormButton, isDark = true }) => {
   return (
-    <section className="py-32 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden">
+    <section className={`py-32 relative overflow-hidden ${
+      isDark
+        ? 'bg-gradient-to-b from-slate-900 to-slate-950'
+        : 'bg-gradient-to-b from-slate-50 to-white'
+    }`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]" />
       
       <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="glass-morphism-strong rounded-3xl p-12 md:p-16 text-center border-2 border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-8">
+        <div className={`rounded-3xl p-12 md:p-16 text-center border-2 border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5 ${
+          isDark ? 'glass-morphism-strong' : 'bg-white shadow-2xl'
+        }`}>
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 ${
+            isDark ? 'glass-morphism' : 'glass-morphism-light'
+          }`}>
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-xs font-mono text-emerald-300 tracking-wider uppercase">
+            <span className={`text-xs font-mono tracking-wider uppercase ${
+              isDark ? 'text-emerald-300' : 'text-emerald-700'
+            }`}>
               Limited Time Offer
             </span>
           </div>
           
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6">
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black mb-6 ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
             Ready to See the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Truth</span>?
           </h2>
           
-          <p className="text-lg sm:text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+          <p className={`text-lg sm:text-xl mb-12 max-w-2xl mx-auto ${
+            isDark ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             Join 2,000+ growth teams who stopped guessing and started growing with AI-powered attribution.
           </p>
           
