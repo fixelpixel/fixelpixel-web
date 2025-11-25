@@ -10,6 +10,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Variables */
+:root[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: rgba(15, 23, 42, 0.6);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --shadow-card: none;
+}
+
+:root[data-theme="light"] {
+  --bg: #F1F5F9;
+  --surface: #FFFFFF;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 /* Custom Scrollbar */
@@ -96,18 +121,32 @@ body {
 
 /* Glass Morphism - Dark Mode */
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-morphism-strong {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Glass Morphism - Light Mode */
+[data-theme="light"] .glass-morphism,
+[data-theme="light"] .glass-morphism-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .glass-morphism-strong {
+  background: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+}
+
 .glass-morphism-light {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px) saturate(180%);
@@ -115,6 +154,25 @@ body {
   box-shadow: 
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
     0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* Smart color overrides for light theme */
+[data-theme="light"] .text-slate-400,
+[data-theme="light"] .text-slate-500 {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] h1.text-white, 
+[data-theme="light"] h2.text-white,
+[data-theme="light"] h3.text-white,
+[data-theme="light"] p.text-white,
+[data-theme="light"] span.text-white:not(.btn-text) { 
+  color: var(--text) !important; 
+}
+
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-900 {
+  background-color: transparent !important;
 }
 
 .text-gradient {

@@ -196,11 +196,11 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.02,
+      size: isLight ? 0.04 : 0.02,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending,
+      opacity: isLight ? 0.9 : 0.8,
+      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
     });
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
