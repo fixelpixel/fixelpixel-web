@@ -1,7 +1,7 @@
 
 <!-- 
   Production Build
-  Generated: 2025-11-25T03:21:52.645Z
+  Generated: 2025-11-28T01:25:00.624Z
   Build Type: Optimized for production
   Framework: React 18 (Production)
   Three.js: r128
@@ -274,10 +274,12 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #10b981 100%);
-  background-size: 200% 200%;
+  /* Было: Emerald -> Indigo -> Emerald */
+  /* Стало: Emerald (Money) -> Violet (AI/Brand) -> Cyan (Tech) */
+  background: linear-gradient(135deg, #34d399 0%, #a78bfa 45%, #22d3ee 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transpfarent;
   background-clip: text;
   animation: gradient-shift 5s ease infinite;
 }
@@ -305,6 +307,9 @@ body {
 
 .btn-magnetic:hover {
   transform: scale(1.05);
+  /* Смешиваем тень денег (зеленый) и бренда (фиолетовый) */
+  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.4), 
+              0 0 20px -5px rgba(139, 92, 246, 0.3); 
 }
 
 .btn-magnetic::before {
@@ -562,27 +567,15 @@ window.validateEmail = validateEmail;
 window.submitToAPI = submitToAPI;
 
     // ==================== COMPONENTS ====================
-    /**
- * FixelDynamicLogo
- * Автономный компонент логотипа.
- * - Анимирует "Fixel Pixel" -> "FP" при скролле.
- * - Содержит фирменные фиолетовые скобки (#520260).
- * - Содержит "2.0" в степени (Emerald).
- * - Поддерживает светлую/темную тему через проп isDark.
- */
-
-const LogoAnimator = ({ isScrolled, isDark }) => {
+    const LogoAnimator = ({ isScrolled, isDark, colorMode }) => {
   const text = "Fixel Pixel";
   const letters = text.split('');
   
-  // Логика задержки для эффекта "змейки" (последовательное исчезновение/появление)
   const getDelay = (index) => {
     if (isScrolled) {
-      // При сворачивании: буквы исчезают справа налево к центрам (F и P)
       if (index >= 1 && index <= 5) return `${(5 - index) * 50}ms`;
       if (index >= 7 && index <= 10) return `${(10 - index) * 50}ms`;
     } else {
-      // При разворачивании: буквы появляются от центров наружу
       if (index >= 1 && index <= 5) return `${(index - 1) * 50}ms`;
       if (index >= 7 && index <= 10) return `${(index - 7) * 50}ms`;
     }
@@ -590,16 +583,16 @@ const LogoAnimator = ({ isScrolled, isDark }) => {
   };
 
   return (
-    // Контейнер текста: выравнивание и размер
-    <div className="flex items-center font-bold tracking-tight text-2xl h-9 pb-1">
+    <div className="flex items-center font-black tracking-tighter text-2xl h-9 pb-1">
       {letters.map((char, i) => (
         <span 
           key={i}
-          // Базовые стили букв + переходы
-          className={`inline-block transition-all duration-500 ease-in-out whitespace-pre ${isDark ? "text-white" : "text-slate-900"}`}
+          className={`inline-block transition-all duration-500 ease-in-out whitespace-pre ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}
           style={{
-            // Индексы 0 (F) и 6 (P) остаются всегда
-            // Остальные схлопываются в ширину 0 и прозрачность 0
+            // Фикс слипания FP
+            ...(i === 6 && isScrolled ? { marginLeft: '2px' } : { marginLeft: '0px' }),
             ...((i !== 0 && i !== 6) ? { 
               maxWidth: isScrolled ? '0px' : '20px', 
               opacity: isScrolled ? 0 : 1,
@@ -618,51 +611,74 @@ const LogoAnimator = ({ isScrolled, isDark }) => {
 const FixelDynamicLogo = ({ isDark = true }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Слушатель скролла для триггера анимации
+  // НАСТРОЙКА ЦВЕТА ЗДЕСЬ
+  // 'unified' = один цвет (Фиолетовый) - максимально строго
+  // 'indigo'  = один цвет (Индиго) - под цвет сайта
+  // 'soft'    = мягкий градиент (Фиолетовый -> Синий)
+  const variant = 'unified'; 
+
   useEffect(() => {
     const handleScroll = () => {
-      // Анимация срабатывает при скролле > 10px
       setIsScrolled(window.scrollY > 10);
     };
-    
     window.addEventListener('scroll', handleScroll);
-    // Триггер при монтировании на случай, если страница уже прокручена
     handleScroll();
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Стиль скобок: Фирменный цвет + небольшая тень для читаемости в Dark Mode
-  const bracketStyle = {
-    color: '#520260',
-    textShadow: isDark ? '0 0 15px rgba(82, 2, 96, 0.8), 0 0 2px rgba(255,255,255,0.3)' : 'none'
+  // Определяем классы в зависимости от варианта
+  const getBracketColors = () => {
+    switch(variant) {
+      case 'unified': // Чистый Фиолетовый (Твой любимый)
+        return {
+          left: isDark ? "text-violet-500" : "text-violet-600",
+          right: isDark ? "text-violet-500" : "text-violet-600",
+          shadow: isDark ? "drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]" : ""
+        };
+      case 'indigo': // Чистый Индиго (Под цвет сайта)
+        return {
+          left: isDark ? "text-indigo-500" : "text-indigo-600",
+          right: isDark ? "text-indigo-500" : "text-indigo-600",
+          shadow: isDark ? "drop-shadow-[0_0_10px_rgba(99,102,241,0.5)]" : ""
+        };
+      case 'soft': // Мягкий перелив (Соседи)
+        return {
+          left: isDark ? "text-violet-500" : "text-violet-600",
+          right: isDark ? "text-indigo-500" : "text-indigo-600",
+          shadow: ""
+        };
+      default:
+        return { left: "text-white", right: "text-white", shadow: "" };
+    }
   };
+
+  const colors = getBracketColors();
 
   return (
     <div className="flex items-center cursor-pointer group select-none h-full">
       {/* Левая скобка */}
       <span 
-        className="text-3xl font-bold mr-1.5 pb-1 transition-all duration-300" 
-        style={bracketStyle}
+        className={`text-3xl font-bold mr-1 pb-1 transition-all duration-300 group-hover:-translate-x-1 ${colors.left} ${colors.shadow}`}
       >
         {`{`}
       </span>
       
-      {/* Анимированный текст */}
+      {/* Текст */}
       <LogoAnimator isScrolled={isScrolled} isDark={isDark} />
       
-      {/* Правая часть: Скобка + Степень 2.0 */}
+      {/* Правая часть */}
       <div className="relative flex items-center">
         <span 
-          className="text-3xl font-bold ml-1.5 pb-1 transition-all duration-300" 
-          style={bracketStyle}
+          className={`text-3xl font-bold ml-1 pb-1 transition-all duration-300 group-hover:translate-x-1 ${colors.right} ${colors.shadow}`}
         >
           {`}`}
         </span>
         
-        {/* Superscript 2.0 */}
+        {/* 2.0 - Оставляем Изумрудным как акцент денег, или делаем серым */}
         <span 
-          className={`absolute -top-1 -right-6 text-[10px] font-extrabold font-mono tracking-tighter transition-colors duration-300 ${isDark ? "text-emerald-400" : "text-emerald-600"}`}
+          className={`absolute -top-1 -right-6 text-[10px] font-extrabold font-mono tracking-tighter transition-colors duration-300 ${
+            isDark ? "text-slate-500" : "text-slate-400"
+          }`}
         >
           2.0
         </span>
@@ -780,7 +796,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                 onClick={() => trackEvent('click_signin', { location: 'navbar' })}
                 className={`px-6 py-2 font-semibold transition-colors ${
                   isDark
-                    ? 'text-white hover:text-emerald-400'
+                    ? 'text-white hover:text-teal-400'
                     : 'text-slate-700 hover:text-emerald-700'
                 }`}>
                 Sign In
@@ -789,8 +805,8 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                 onClick={() => trackEvent('click_start_trial', { location: 'navbar' })}
                 className={`px-6 py-2 font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105 ${
                   isDark
-                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:shadow-emerald-500/50 text-white'
-                    : 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:shadow-emerald-600/30 text-white'
+                    ? 'bg-gradient-to-r from-teal-500 to-teal-600 hover:shadow-teal-500/50 text-white'
+                    : 'bg-gradient-to-r from-teal-600 to-emerald-700 hover:shadow-teal-600/30 text-white'
                 }`}>
                 Start Free →
               </button>
@@ -801,7 +817,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
               onClick={() => setMenuOpen(true)}
               className={`md:hidden w-10 h-10 flex items-center justify-center transition-colors ${
                 isDark
-                  ? 'text-white hover:text-emerald-400'
+                  ? 'text-white hover:text-teal-400'
                   : 'text-slate-700 hover:text-emerald-700'
               }`}
               aria-label="Open navigation menu"
@@ -880,8 +896,8 @@ const FixelDynamicLogo = ({ isDark = true }) => {
               onClick={() => setMenuOpen(false)}
               className={`w-full px-6 py-3 font-semibold rounded-xl shadow-lg ${
                 isDark
-                  ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white'
-                  : 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white'
+                  ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white'
+                  : 'bg-gradient-to-r from-teal-600 to-emerald-700 text-white'
               }`}
             >
               Start Free →
@@ -955,7 +971,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
           trackEvent('click_start_trial', { location });
         }}
         aria-label="Start free trial"
-        className="btn-magnetic ripple group px-8 py-4 min-h-[44px] min-w-[44px] bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-semibold rounded-2xl shadow-[0_20px_60px_rgba(16,185,129,0.4)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-emerald-500/50"
+        className="btn-magnetic ripple group px-8 py-4 min-h-[44px] min-w-[44px] bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-slate-950 font-semibold rounded-2xl shadow-[0_20px_60px_rgba(16,185,129,0.4)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-500/50"
       >
         <span className="flex items-center gap-3">
           Start Free
@@ -973,7 +989,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
             onClick={() => setShowModal(false)}
           />
           
-          <div className="relative glass-morphism-strong rounded-3xl p-8 max-w-md w-full border-2 border-emerald-500/20 shadow-2xl">
+          <div className="relative glass-morphism-strong rounded-3xl p-8 max-w-md w-full border-2 border-teal-500/20 shadow-2xl">
             {!success ? (
               <>
                 <button
@@ -1001,7 +1017,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                       placeholder="John Doe"
                       required
                     />
@@ -1016,7 +1032,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                       placeholder="john@company.com"
                       required
                     />
@@ -1031,7 +1047,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                       type="text"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                       placeholder="Acme Inc."
                     />
                   </div>
@@ -1045,7 +1061,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Creating Account...' : 'Start Free Trial'}
                   </button>
@@ -1053,8 +1069,8 @@ const FixelDynamicLogo = ({ isDark = true }) => {
               </>
             ) : (
               <div className="text-center py-8">
-                <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -1253,7 +1269,7 @@ const FixelDynamicLogo = ({ isDark = true }) => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Booking Demo...' : 'Book Demo'}
                   </button>
@@ -1261,8 +1277,8 @@ const FixelDynamicLogo = ({ isDark = true }) => {
               </>
             ) : (
               <div className="text-center py-8">
-                <div className="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-violet-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -1303,7 +1319,7 @@ const FloatingDashboard = ({ isDark }) => {
   return (
     <div className="card-3d relative">
       {/* Glow effect */}
-      <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 via-indigo-500/20 to-emerald-500/20 rounded-3xl blur-3xl animate-glow"></div>
+      <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 via-indigo-500/20 to-teal-500/20 rounded-3xl blur-3xl animate-glow"></div>
       
       {/* Main card */}
       <div className={`relative rounded-3xl p-8 space-y-6 ${
@@ -1315,7 +1331,7 @@ const FloatingDashboard = ({ isDark }) => {
         <div className="flex items-center justify-between">
           <div>
             <div className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-emerald-400' : 'text-emerald-600'
+              isDark ? 'text-teal-400' : 'text-teal-600'
             }`}>Reality Sync</div>
             <div className={`text-sm ${
               isDark ? 'text-slate-400' : 'text-slate-600'
@@ -1323,11 +1339,11 @@ const FloatingDashboard = ({ isDark }) => {
           </div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
             <span className={`text-xs font-mono ${
-              isDark ? 'text-emerald-400' : 'text-emerald-600'
+              isDark ? 'text-teal-400' : 'text-teal-600'
             }`}>Live</span>
           </div>
         </div>
@@ -1381,15 +1397,15 @@ const MetricCard = ({ label, value, color, trend, isDark }) => (
       ? 'bg-slate-950/50 border-slate-800 hover:border-slate-700'
       : 'bg-white border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md'
   }`}>
-    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
     <div className="relative">
       <div className={`text-xs font-mono uppercase tracking-wide mb-1 ${
         isDark ? 'text-slate-500' : 'text-slate-600'
       }`}>{label}</div>
       <div className={`text-2xl font-bold ${
         color === 'emerald' 
-          ? (isDark ? 'text-emerald-400' : 'text-emerald-600') 
-          : (isDark ? 'text-indigo-400' : 'text-indigo-600')
+          ? (isDark ? 'text-teal-400' : 'text-teal-600') 
+          : (isDark ? 'text-violet-400' : 'text-indigo-600')
       }`}>
         {value}
       </div>
@@ -1416,7 +1432,7 @@ const LiveChart = () => {
       {data.map((height, i) => (
         <div key={i} className="flex-1 relative group">
           <div 
-            className="absolute bottom-0 left-0 right-0 rounded-t-sm bg-gradient-to-t from-emerald-500 to-indigo-400 transition-all duration-500 ease-out"
+            className="absolute bottom-0 left-0 right-0 rounded-t-sm bg-gradient-to-t from-teal-500 to-indigo-400 transition-all duration-500 ease-out"
             style={{ height: `${height}%` }}
           >
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -1461,10 +1477,13 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
       positions[i + 2] = (Math.random() - 0.5) * 10;
       
       // Light theme: darker particles (emerald-700 and indigo-700)
-      // Dark theme: bright particles (emerald-400 and indigo-400)
-      const color = Math.random() > 0.5 ? 
-        (isLight ? new THREE.Color(0x047857) : new THREE.Color(0x10b981)) : 
-        (isLight ? new THREE.Color(0x4338ca) : new THREE.Color(0x6366f1));
+      // Dark theme: bright particles (teal-400 and indigo-400)
+// Внутри цикла создания частиц
+const color = Math.random() > 0.5 ? 
+  // Основные: Фиолетовый неон (Бренд)
+  (isLight ? new THREE.Color(0x7c3aed) : new THREE.Color(0xa78bfa)) : 
+  // Второстепенные: Циан (Технологии) или Эмеральд (Деньги)
+  (isLight ? new THREE.Color(0x059669) : new THREE.Color(0x34d399));
       colors[i] = color.r;
       colors[i + 1] = color.g;
       colors[i + 2] = color.b;
@@ -1571,8 +1590,8 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
           <div className="flex flex-col items-center gap-4">
             <div className={`w-16 h-16 border-4 rounded-full animate-spin ${
               isDark
-                ? 'border-emerald-500/20 border-t-emerald-500'
-                : 'border-emerald-600/20 border-t-emerald-600'
+                ? 'border-teal-500/20 border-t-teal-500'
+                : 'border-teal-600/20 border-t-teal-600'
             }`} />
             <p className={`font-mono text-sm ${
               isDark ? 'text-slate-500' : 'text-slate-600'
@@ -1617,8 +1636,8 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
               isDark ? 'glass-morphism' : 'glass-morphism-light'
             }`}>
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
               </span>
               <span className={`text-xs font-mono tracking-wider uppercase ${
                 isDark ? 'text-emerald-300' : 'text-emerald-700'
@@ -1651,11 +1670,11 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
             }`}>
               AI-driven attribution that captures{' '}
               <span className={`font-semibold ${
-                isDark ? 'text-emerald-400' : 'text-emerald-700'
+                isDark ? 'text-teal-400' : 'text-emerald-700'
               }`}>everything</span>,
               understands{' '}
               <span className={`font-semibold ${
-                isDark ? 'text-indigo-400' : 'text-indigo-700'
+                isDark ? 'text-violet-400' : 'text-indigo-700'
               }`}>causality</span>,
               and reveals{' '}
               <span className={`font-semibold ${
@@ -1887,11 +1906,11 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <span className={isDark ? 'text-emerald-400 text-xs' : 'text-emerald-600 text-xs'}>✓</span>
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <span className={isDark ? 'text-teal-400 text-xs' : 'text-teal-600 text-xs'}>✓</span>
                   </div>
                   <span className={`text-sm font-medium ${
-                    isDark ? 'text-emerald-400' : 'text-emerald-700'
+                    isDark ? 'text-teal-400' : 'text-emerald-700'
                   }`}>
                     {problem.truth}
                   </span>
@@ -1952,9 +1971,9 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
             {/* Truth Mode */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                <div className="w-3 h-3 rounded-full bg-teal-500" />
                 <h4 className={`text-xl font-bold ${
-                  isDark ? 'text-emerald-400' : 'text-emerald-700'
+                  isDark ? 'text-teal-400' : 'text-emerald-700'
                 }`}>Truth Mode</h4>
               </div>
               {[
@@ -1965,12 +1984,12 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
               ].map((metric) => (
                 <div key={metric.label} className={`flex items-center justify-between p-4 rounded-xl border ${
                   isDark
-                    ? 'bg-slate-900/50 border-emerald-500/10'
+                    ? 'bg-slate-900/50 border-teal-500/10'
                     : 'bg-emerald-50 border-emerald-200/50'
                 }`}>
                   <span className={isDark ? 'text-slate-300' : 'text-slate-700'}>{metric.label}</span>
                   <span className={`font-mono font-bold ${
-                    isDark ? 'text-emerald-400' : 'text-emerald-700'
+                    isDark ? 'text-teal-400' : 'text-emerald-700'
                   }`}>{metric.value}</span>
                 </div>
               ))}
@@ -1979,7 +1998,7 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
           
           {/* CTA */}
           <div className="mt-12 text-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_60px_rgba(16,185,129,0.4)]">
+            <button className="px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_60px_rgba(16,185,129,0.4)]">
               See Your Truth →
             </button>
           </div>
@@ -2017,7 +2036,7 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
   }, [value]);
   
   const progressPercent = inverse ? 100 - value : value;
-  const colorClass = color === 'emerald' ? 'from-emerald-500 to-emerald-600' : 'from-red-500 to-orange-500';
+  const colorClass = color === 'emerald' ? 'from-teal-500 to-teal-600' : 'from-red-500 to-orange-500';
   
   return (
     <div className={`rounded-3xl p-8 transition-all duration-500 ${
@@ -2033,7 +2052,7 @@ const Hero = ({ TrialFormButton, isDark = true }) => {
       </div>
       <div className={`text-5xl font-black mb-4 transition-colors duration-500 ${
         color === 'emerald' 
-          ? (isDark ? 'text-emerald-400' : 'text-emerald-600')
+          ? (isDark ? 'text-teal-400' : 'text-teal-600')
           : (isDark ? 'text-red-400' : 'text-red-600')
       }`}>
         {displayValue.toFixed(1)}{suffix}
@@ -2106,10 +2125,10 @@ const RealitySwitch = ({ isDark = true }) => {
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
             <div className={`w-2 h-2 rounded-full transition-colors duration-500 ${
-              mode === 'truth' ? 'bg-emerald-500' : 'bg-red-500'
+              mode === 'truth' ? 'bg-teal-500' : 'bg-red-500'
             } animate-pulse`} />
             <span className={`text-xs font-mono uppercase tracking-wider transition-colors duration-500 ${
-              mode === 'truth' ? 'text-emerald-400' : 'text-red-400'
+              mode === 'truth' ? 'text-teal-400' : 'text-red-400'
             }`}>
               {mode === 'truth' ? 'Truth Mode Active' : 'Illusion Mode'}
             </span>
@@ -2117,7 +2136,7 @@ const RealitySwitch = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Reality <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Switch</span>
+            Reality <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">Switch</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-12 ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -2136,7 +2155,7 @@ const RealitySwitch = ({ isDark = true }) => {
             <button
               onClick={handleToggle}
               onKeyDown={handleKeyDown}
-              className="relative w-24 h-12 rounded-full focus:outline-none focus:ring-4 focus:ring-emerald-500/50 transition-all duration-300"
+              className="relative w-24 h-12 rounded-full focus:outline-none focus:ring-4 focus:ring-teal-500/50 transition-all duration-300"
               style={{
                 background: mode === 'truth' 
                   ? 'linear-gradient(135deg, #10b981, #6366f1)' 
@@ -2161,7 +2180,7 @@ const RealitySwitch = ({ isDark = true }) => {
             </button>
             
             <span className={`text-lg font-semibold transition-colors duration-300 ${
-              mode === 'truth' ? 'text-emerald-400' : 'text-slate-600'
+              mode === 'truth' ? 'text-teal-400' : 'text-slate-600'
             }`}>
               Truth Mode
             </span>
@@ -2242,11 +2261,11 @@ const RealitySwitch = ({ isDark = true }) => {
             </ul>
           </div>
           
-          <div className={`rounded-3xl p-8 border-2 border-emerald-500/20 ${
+          <div className={`rounded-3xl p-8 border-2 border-teal-500/20 ${
             isDark ? 'glass-morphism-strong' : 'bg-emerald-50'
           }`}>
             <h3 className={`text-2xl font-bold mb-6 flex items-center gap-3 ${
-              isDark ? 'text-emerald-400' : 'text-emerald-700'
+              isDark ? 'text-teal-400' : 'text-emerald-700'
             }`}>
               <span className="text-3xl">✨</span>
               Truth Mode Advantages
@@ -2260,8 +2279,8 @@ const RealitySwitch = ({ isDark = true }) => {
                 'Unified data warehouse'
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className={`flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs mt-0.5 ${
-                    isDark ? 'text-emerald-400' : 'text-emerald-700'
+                  <span className={`flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-xs mt-0.5 ${
+                    isDark ? 'text-teal-400' : 'text-emerald-700'
                   }`}>✓</span>
                   <span className={`font-medium ${
                     isDark ? 'text-slate-300' : 'text-slate-700'
@@ -2361,7 +2380,7 @@ const RealitySwitch = ({ isDark = true }) => {
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
             <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-indigo-400' : 'text-indigo-700'
+              isDark ? 'text-violet-400' : 'text-indigo-700'
             }`}>
               ROI Calculator
             </span>
@@ -2369,7 +2388,7 @@ const RealitySwitch = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Hidden Loss</span>
+            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">Hidden Loss</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -2390,7 +2409,7 @@ const RealitySwitch = ({ isDark = true }) => {
                 <label className="text-lg font-semibold text-white">
                   Monthly Ad Spend
                 </label>
-                <span className="text-2xl font-bold text-indigo-400 font-mono">
+                <span className="text-2xl font-bold text-violet-400 font-mono">
                   {formatCurrency(spend)}
                 </span>
               </div>
@@ -2418,7 +2437,7 @@ const RealitySwitch = ({ isDark = true }) => {
                 <label className="text-lg font-semibold text-white">
                   Average Order Value
                 </label>
-                <span className="text-2xl font-bold text-emerald-400 font-mono">
+                <span className="text-2xl font-bold text-teal-400 font-mono">
                   {formatCurrency(aov)}
                 </span>
               </div>
@@ -2442,16 +2461,16 @@ const RealitySwitch = ({ isDark = true }) => {
           </div>
           
           {/* Results Card */}
-          <div className="relative overflow-hidden rounded-3xl p-10 bg-gradient-to-br from-emerald-500/10 to-indigo-500/10 border-2 border-emerald-500/30">
+          <div className="relative overflow-hidden rounded-3xl p-10 bg-gradient-to-br from-teal-500/10 to-indigo-500/10 border-2 border-teal-500/30">
             {/* Glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-indigo-500 opacity-20 blur-2xl animate-glow" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 to-indigo-500 opacity-20 blur-2xl animate-glow" />
             
             <div className="relative">
               <div className="text-center mb-6">
                 <div className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-2">
                   Estimated Annual Recovered Revenue
                 </div>
-                <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-emerald-400 mb-4 animate-[gradient-shift_3s_ease_infinite]">
+                <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-400 to-teal-400 mb-4 animate-[gradient-shift_3s_ease_infinite]">
                   {formatCurrency(displayValue)}
                 </div>
                 <p className="text-slate-400 text-sm max-w-md mx-auto">
@@ -2467,11 +2486,11 @@ const RealitySwitch = ({ isDark = true }) => {
                 </div>
                 <div className="text-center">
                   <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Monthly Impact</div>
-                  <div className="text-2xl font-bold text-indigo-400">{formatCurrency(recovered / 12)}</div>
+                  <div className="text-2xl font-bold text-violet-400">{formatCurrency(recovered / 12)}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">ROAS Lift</div>
-                  <div className="text-2xl font-bold text-emerald-400">+2.1x</div>
+                  <div className="text-2xl font-bold text-teal-400">+2.1x</div>
                 </div>
               </div>
             </div>
@@ -2479,7 +2498,7 @@ const RealitySwitch = ({ isDark = true }) => {
           
           {/* CTA */}
           <div className="text-center mt-10">
-            <button className="px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-bold text-lg rounded-2xl transition-all duration-300 shadow-[0_25px_70px_rgba(16,185,129,0.4)] hover:scale-105">
+            <button className="px-10 py-5 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-slate-950 font-bold text-lg rounded-2xl transition-all duration-300 shadow-[0_25px_70px_rgba(16,185,129,0.4)] hover:scale-105">
               Start Recovering Revenue →
             </button>
             <p className="text-sm text-slate-500 mt-4">
@@ -2516,14 +2535,14 @@ const RealitySwitch = ({ isDark = true }) => {
       id: 'browser',
       icon: '🌐',
       label: 'Browser',
-      color: 'from-emerald-500 to-emerald-600',
+      color: 'from-teal-500 to-teal-600',
       stats: { events: '2.4M/day', latency: '12ms' }
     },
     {
       id: 'server',
       icon: '⚡',
       label: 'Server',
-      color: 'from-indigo-500 to-indigo-600',
+      color: 'from-violet-600 to-indigo-600',
       stats: { sync: '99.2%', drift: '<2%' }
     },
     {
@@ -2547,9 +2566,9 @@ const RealitySwitch = ({ isDark = true }) => {
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
-            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-violet-500 rounded-full animate-pulse" />
             <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-indigo-400' : 'text-indigo-700'
+              isDark ? 'text-violet-400' : 'text-indigo-700'
             }`}>
               Hybrid Engine
             </span>
@@ -2557,7 +2576,7 @@ const RealitySwitch = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-blue-400">Dual-Pipeline Sync</span>
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-400 to-blue-400">Dual-Pipeline Sync</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -2612,7 +2631,7 @@ const RealitySwitch = ({ isDark = true }) => {
                   {Object.entries(node.stats).map(([key, value]) => (
                     <div key={key} className="flex items-center justify-between mb-2 last:mb-0">
                       <span className="text-xs text-slate-500 uppercase font-mono">{key}</span>
-                      <span className="text-sm font-semibold text-emerald-400 font-mono">{value}</span>
+                      <span className="text-sm font-semibold text-teal-400 font-mono">{value}</span>
                     </div>
                   ))}
                 </div>
@@ -2658,8 +2677,8 @@ const RealitySwitch = ({ isDark = true }) => {
                 }`}
               >
                 <div className={`text-sm font-mono mb-2 ${
-                  process.color === 'emerald' ? 'text-emerald-400' :
-                  process.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                  process.color === 'emerald' ? 'text-teal-400' :
+                  process.color === 'indigo' ? 'text-violet-400' : 'text-blue-400'
                 }`}>
                   STEP {process.step}
                 </div>
@@ -2696,8 +2715,8 @@ const RealitySwitch = ({ isDark = true }) => {
       name: 'Tracking Layer',
       icon: '📡',
       color: 'emerald',
-      gradient: 'from-emerald-500/10 to-emerald-600/5',
-      borderColor: 'border-emerald-500/20',
+      gradient: 'from-teal-500/10 to-teal-600/5',
+      borderColor: 'border-teal-500/20',
       features: [
         { text: '100% Event Capture', icon: '✓' },
         { text: 'Identity Lock™', icon: '🔐' },
@@ -2710,7 +2729,7 @@ const RealitySwitch = ({ isDark = true }) => {
       name: 'Intelligence Layer',
       icon: '🧠',
       color: 'indigo',
-      gradient: 'from-indigo-500/10 to-indigo-600/5',
+      gradient: 'from-violet-600/10 to-indigo-600/5',
       borderColor: 'border-indigo-500/20',
       features: [
         { text: 'AI Attribution Model', icon: '🎯' },
@@ -2747,9 +2766,9 @@ const RealitySwitch = ({ isDark = true }) => {
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
             <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-emerald-400' : 'text-emerald-700'
+              isDark ? 'text-teal-400' : 'text-emerald-700'
             }`}>
               3-Tier Architecture
             </span>
@@ -2757,7 +2776,7 @@ const RealitySwitch = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Growth <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">OS</span>
+            Growth <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400">OS</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -2780,8 +2799,8 @@ const RealitySwitch = ({ isDark = true }) => {
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${
-                  tier.color === 'emerald' ? 'from-emerald-500 to-emerald-600' :
-                  tier.color === 'indigo' ? 'from-indigo-500 to-indigo-600' : 'from-blue-500 to-blue-600'
+                  tier.color === 'emerald' ? 'from-teal-500 to-teal-600' :
+                  tier.color === 'indigo' ? 'from-violet-600 to-indigo-600' : 'from-blue-500 to-blue-600'
                 } flex items-center justify-center text-3xl shadow-lg`}>
                   {tier.icon}
                 </div>
@@ -2790,8 +2809,8 @@ const RealitySwitch = ({ isDark = true }) => {
                     isDark ? 'text-white' : 'text-slate-900'
                   }`}>{tier.name}</h3>
                   <div className={`text-xs font-mono uppercase tracking-wider ${
-                    tier.color === 'emerald' ? (isDark ? 'text-emerald-400' : 'text-emerald-600') :
-                    tier.color === 'indigo' ? (isDark ? 'text-indigo-400' : 'text-indigo-600') : 
+                    tier.color === 'emerald' ? (isDark ? 'text-teal-400' : 'text-teal-600') :
+                    tier.color === 'indigo' ? (isDark ? 'text-violet-400' : 'text-indigo-600') : 
                     (isDark ? 'text-blue-400' : 'text-blue-600')
                   }`}>
                     Layer {tier.id === 'tracking' ? '01' : tier.id === 'intelligence' ? '02' : '03'}
@@ -2807,8 +2826,8 @@ const RealitySwitch = ({ isDark = true }) => {
                     className="flex items-center gap-3 group"
                   >
                     <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${
-                      tier.color === 'emerald' ? 'from-emerald-500/20 to-emerald-600/10' :
-                      tier.color === 'indigo' ? 'from-indigo-500/20 to-indigo-600/10' : 'from-blue-500/20 to-blue-600/10'
+                      tier.color === 'emerald' ? 'from-teal-500/20 to-teal-600/10' :
+                      tier.color === 'indigo' ? 'from-violet-600/20 to-indigo-600/10' : 'from-blue-500/20 to-blue-600/10'
                     } flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
                       <span className={`text-sm ${
                         isDark ? 'text-white' : 'text-slate-700'
@@ -2826,13 +2845,13 @@ const RealitySwitch = ({ isDark = true }) => {
               {/* Bottom Badge */}
               <div className={`mt-8 pt-6 border-t ${
                 isDark 
-                  ? (tier.color === 'emerald' ? 'border-emerald-500/10' : tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10')
+                  ? (tier.color === 'emerald' ? 'border-teal-500/10' : tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10')
                   : 'border-slate-100'
               }`}>
                 <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">
                   Status: <span className={`${
-                    tier.color === 'emerald' ? (isDark ? 'text-emerald-400' : 'text-emerald-600') :
-                    tier.color === 'indigo' ? (isDark ? 'text-indigo-400' : 'text-indigo-600') : 
+                    tier.color === 'emerald' ? (isDark ? 'text-teal-400' : 'text-teal-600') :
+                    tier.color === 'indigo' ? (isDark ? 'text-violet-400' : 'text-indigo-600') : 
                     (isDark ? 'text-blue-400' : 'text-blue-600')
                   } font-bold`}>Active</span>
                 </div>
@@ -2858,14 +2877,14 @@ const RealitySwitch = ({ isDark = true }) => {
             </div>
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shadow-lg">
                   <span className="text-xl">📡</span>
                 </div>
                 <div className="text-xs text-slate-500 font-mono">Track</div>
               </div>
               <div className="text-slate-600 text-2xl">→</div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg">
                   <span className="text-xl">🧠</span>
                 </div>
                 <div className="text-xs text-slate-500 font-mono">Analyze</div>
@@ -2930,8 +2949,8 @@ const RealitySwitch = ({ isDark = true }) => {
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+            <div className="w-2 h-2 bg-violet-500 rounded-full animate-pulse" />
+            <span className="text-xs font-mono text-violet-400 uppercase tracking-wider">
               Social Proof
             </span>
           </div>
@@ -2961,7 +2980,7 @@ const RealitySwitch = ({ isDark = true }) => {
               {/* Author */}
               <div className="flex items-center justify-between border-t border-slate-700/50 pt-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/10 flex items-center justify-center text-3xl">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600/20 to-indigo-600/10 flex items-center justify-center text-3xl">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -2973,9 +2992,9 @@ const RealitySwitch = ({ isDark = true }) => {
                 </div>
                 
                 {/* Stat Badge */}
-                <div className="glass-morphism px-4 py-2 rounded-xl border border-emerald-500/20">
+                <div className="glass-morphism px-4 py-2 rounded-xl border border-teal-500/20">
                   <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Result</div>
-                  <div className="text-sm font-bold text-emerald-400">{testimonial.stat}</div>
+                  <div className="text-sm font-bold text-teal-400">{testimonial.stat}</div>
                 </div>
               </div>
             </div>
@@ -2983,7 +3002,7 @@ const RealitySwitch = ({ isDark = true }) => {
         </div>
         
         {/* CTA Banner */}
-        <div className="mt-16 glass-morphism-strong rounded-3xl p-12 text-center border-2 border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-blue-500/5">
+        <div className="mt-16 glass-morphism-strong rounded-3xl p-12 text-center border-2 border-indigo-500/20 bg-gradient-to-br from-violet-600/5 to-blue-500/5">
           <h3 className="text-4xl font-black text-white mb-4">
             Join 200+ Growth Teams
           </h3>
@@ -2991,7 +3010,7 @@ const RealitySwitch = ({ isDark = true }) => {
             Stop guessing. Start growing with AI-powered attribution that actually works.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+            <button className="px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-teal-500/50 transition-all duration-300 hover:scale-105">
               Start Free Trial →
             </button>
             <button className="px-8 py-4 glass-morphism text-white font-bold rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105">
@@ -3000,15 +3019,15 @@ const RealitySwitch = ({ isDark = true }) => {
           </div>
           <div className="mt-6 flex items-center justify-center gap-8 text-sm text-slate-500">
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400">✓</span>
+              <span className="text-teal-400">✓</span>
               <span>No credit card</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400">✓</span>
+              <span className="text-teal-400">✓</span>
               <span>14-day free trial</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400">✓</span>
+              <span className="text-teal-400">✓</span>
               <span>Cancel anytime</span>
             </div>
           </div>
@@ -3084,19 +3103,19 @@ const RealitySwitch = ({ isDark = true }) => {
           {steps.map((step, index) => (
             <div key={index} className={`relative p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
               isDark 
-                ? 'bg-slate-900/50 border-slate-800 hover:border-emerald-500/30' 
+                ? 'bg-slate-900/50 border-slate-800 hover:border-teal-500/30' 
                 : 'bg-white border-slate-200 shadow-lg hover:shadow-xl'
             }`}>
               <div className={`absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg ${
                 isDark 
-                  ? 'bg-slate-800 text-emerald-400 border border-slate-700' 
-                  : 'bg-white text-emerald-600 border border-slate-100'
+                  ? 'bg-slate-800 text-teal-400 border border-slate-700' 
+                  : 'bg-white text-teal-600 border border-slate-100'
               }`}>
                 {step.number}
               </div>
               
               <div className={`mb-6 mt-2 ${
-                isDark ? 'text-emerald-400' : 'text-emerald-600'
+                isDark ? 'text-teal-400' : 'text-teal-600'
               }`}>
                 {step.icon}
               </div>
@@ -3148,15 +3167,15 @@ const RealitySwitch = ({ isDark = true }) => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]" />
       
       <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className={`rounded-3xl p-12 md:p-16 text-center border-2 border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5 ${
+        <div className={`rounded-3xl p-12 md:p-16 text-center border-2 border-teal-500/20 bg-gradient-to-br from-teal-500/5 to-indigo-500/5 ${
           isDark ? 'glass-morphism-strong' : 'bg-white shadow-2xl'
         }`}>
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 ${
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
             <span className={`text-xs font-mono tracking-wider uppercase ${
               isDark ? 'text-emerald-300' : 'text-emerald-700'
@@ -3168,7 +3187,7 @@ const RealitySwitch = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Ready to See the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Truth</span>?
+            Ready to See the <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">Truth</span>?
           </h2>
           
           <p className={`text-lg sm:text-xl mb-12 max-w-2xl mx-auto ${
@@ -3184,19 +3203,19 @@ const RealitySwitch = ({ isDark = true }) => {
           
           <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400 text-lg">✓</span>
+              <span className="text-teal-400 text-lg">✓</span>
               <span>14-day free trial</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400 text-lg">✓</span>
+              <span className="text-teal-400 text-lg">✓</span>
               <span>No credit card required</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400 text-lg">✓</span>
+              <span className="text-teal-400 text-lg">✓</span>
               <span>Setup in 5 minutes</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400 text-lg">✓</span>
+              <span className="text-teal-400 text-lg">✓</span>
               <span>Cancel anytime</span>
             </div>
           </div>
@@ -3218,7 +3237,7 @@ const RealitySwitch = ({ isDark = true }) => {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shadow-lg">
                 <span className="text-2xl">✓</span>
               </div>
               <span className={`text-2xl font-black ${
@@ -3233,8 +3252,8 @@ const RealitySwitch = ({ isDark = true }) => {
             <div className="flex items-center gap-4">
               <a href="#" aria-label="Twitter" className={`transition-colors ${
                 isDark
-                  ? 'text-slate-500 hover:text-emerald-400'
-                  : 'text-slate-400 hover:text-emerald-600'
+                  ? 'text-slate-500 hover:text-teal-400'
+                  : 'text-slate-400 hover:text-teal-600'
               }`}>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
@@ -3242,8 +3261,8 @@ const RealitySwitch = ({ isDark = true }) => {
               </a>
               <a href="#" aria-label="LinkedIn" className={`transition-colors ${
                 isDark
-                  ? 'text-slate-500 hover:text-emerald-400'
-                  : 'text-slate-400 hover:text-emerald-600'
+                  ? 'text-slate-500 hover:text-teal-400'
+                  : 'text-slate-400 hover:text-teal-600'
               }`}>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -3251,8 +3270,8 @@ const RealitySwitch = ({ isDark = true }) => {
               </a>
               <a href="#" aria-label="GitHub" className={`transition-colors ${
                 isDark
-                  ? 'text-slate-500 hover:text-emerald-400'
-                  : 'text-slate-400 hover:text-emerald-600'
+                  ? 'text-slate-500 hover:text-teal-400'
+                  : 'text-slate-400 hover:text-teal-600'
               }`}>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
@@ -3269,27 +3288,27 @@ const RealitySwitch = ({ isDark = true }) => {
             <ul className="space-y-3">
               <li><a href="#features" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Features</a></li>
               <li><a href="#pricing" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Pricing</a></li>
               <li><a href="#integrations" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Integrations</a></li>
               <li><a href="#changelog" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Changelog</a></li>
               <li><a href="#roadmap" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Roadmap</a></li>
             </ul>
@@ -3303,27 +3322,27 @@ const RealitySwitch = ({ isDark = true }) => {
             <ul className="space-y-3">
               <li><a href="#docs" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Documentation</a></li>
               <li><a href="#blog" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Blog</a></li>
               <li><a href="#guides" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Guides</a></li>
               <li><a href="#case-studies" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Case Studies</a></li>
               <li><a href="#support" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Support</a></li>
             </ul>
@@ -3337,27 +3356,27 @@ const RealitySwitch = ({ isDark = true }) => {
             <ul className="space-y-3">
               <li><a href="#about" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>About Us</a></li>
               <li><a href="#careers" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Careers</a></li>
               <li><a href="#partners" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Partners</a></li>
               <li><a href="#privacy" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Privacy</a></li>
               <li><a href="#terms" className={`transition-colors text-sm ${
                 isDark
-                  ? 'text-slate-400 hover:text-emerald-400'
+                  ? 'text-slate-400 hover:text-teal-400'
                   : 'text-slate-600 hover:text-emerald-700'
               }`}>Terms</a></li>
             </ul>
@@ -3376,9 +3395,9 @@ const RealitySwitch = ({ isDark = true }) => {
           <div className="flex items-center gap-6 text-sm">
             <span className={isDark ? 'text-slate-600' : 'text-slate-500'}>Built with ❤️ by practitioners</span>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
               <span className={`font-mono ${
-                isDark ? 'text-emerald-400' : 'text-emerald-700'
+                isDark ? 'text-teal-400' : 'text-emerald-700'
               }`}>All systems operational</span>
             </div>
           </div>
@@ -3532,11 +3551,11 @@ const CausalImpactAnalysis = ({ theme }) => {
       <div className="absolute top-4 right-4 glass-morphism rounded-2xl p-4 space-y-2">
         <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">Attribution Weight</div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
+          <div className="w-3 h-3 rounded-full bg-violet-500"></div>
           <span className="text-slate-300">Paid Social</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+          <div className="w-3 h-3 rounded-full bg-teal-500"></div>
           <span className="text-slate-300">Organic</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
@@ -3562,7 +3581,7 @@ const CausalImpactAnalysis = ({ theme }) => {
 const StatBadge = ({ label, value }) => (
   <div className="glass-morphism rounded-xl px-4 py-2">
     <div className="text-xs font-mono text-slate-500">{label}</div>
-    <div className="text-lg font-bold text-emerald-400">{value}</div>
+    <div className="text-lg font-bold text-teal-400">{value}</div>
   </div>
 );
 
@@ -3599,7 +3618,7 @@ const App = () => {
                 isDark ? 'glass-morphism' : 'glass-morphism-light'
               }`}>
                 <span className={`text-xs font-mono uppercase tracking-wider ${
-                  isDark ? 'text-indigo-400' : 'text-indigo-700'
+                  isDark ? 'text-violet-400' : 'text-indigo-700'
                 }`}>
                   AI Attribution Engine
                 </span>

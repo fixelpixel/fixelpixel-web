@@ -112,7 +112,7 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
                 onClick={() => trackEvent('click_signin', { location: 'navbar' })}
                 className={`px-6 py-2 font-semibold transition-colors ${
                   isDark
-                    ? 'text-white hover:text-emerald-400'
+                    ? 'text-white hover:text-teal-400'
                     : 'text-slate-700 hover:text-emerald-700'
                 }`}>
                 Sign In
@@ -121,8 +121,8 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
                 onClick={() => trackEvent('click_start_trial', { location: 'navbar' })}
                 className={`px-6 py-2 font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105 ${
                   isDark
-                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:shadow-emerald-500/50 text-white'
-                    : 'bg-gradient-to-r from-emerald-600 to-emerald-700 hover:shadow-emerald-600/30 text-white'
+                    ? 'bg-gradient-to-r from-teal-500 to-teal-600 hover:shadow-teal-500/50 text-white'
+                    : 'bg-gradient-to-r from-teal-600 to-emerald-700 hover:shadow-teal-600/30 text-white'
                 }`}>
                 Start Free →
               </button>
@@ -133,7 +133,7 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
               onClick={() => setMenuOpen(true)}
               className={`md:hidden w-10 h-10 flex items-center justify-center transition-colors ${
                 isDark
-                  ? 'text-white hover:text-emerald-400'
+                  ? 'text-white hover:text-teal-400'
                   : 'text-slate-700 hover:text-emerald-700'
               }`}
               aria-label="Open navigation menu"
@@ -212,8 +212,8 @@ export const Navbar = ({ isDark = true, toggleTheme }) => {
               onClick={() => setMenuOpen(false)}
               className={`w-full px-6 py-3 font-semibold rounded-xl shadow-lg ${
                 isDark
-                  ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white'
-                  : 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white'
+                  ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white'
+                  : 'bg-gradient-to-r from-teal-600 to-emerald-700 text-white'
               }`}
             >
               Start Free →

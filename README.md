@@ -181,7 +181,7 @@ Can be done later or skipped:
 ### Colors
 ```css
 /* Primary */
---emerald-500: #10b981
+--teal-500: #10b981
 --indigo-500: #6366f1
 --blue-500: #3b82f6
 
@@ -220,8 +220,8 @@ Soft: 0 25px 70px rgba(16,185,129,0.3)
 Strong: 0 35px 90px rgba(16,185,129,0.5)
 
 /* Gradients */
-from-emerald-500 to-emerald-600
-from-emerald-500 via-indigo-500 to-blue-500
+from-teal-500 to-teal-600
+from-teal-500 via-indigo-500 to-blue-500
 ```
 
 ---

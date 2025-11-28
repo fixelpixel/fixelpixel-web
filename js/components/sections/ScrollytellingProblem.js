@@ -171,11 +171,11 @@ export const ScrollytellingProblem = ({ isDark = true }) => {
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <span className={isDark ? 'text-emerald-400 text-xs' : 'text-emerald-600 text-xs'}>✓</span>
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <span className={isDark ? 'text-teal-400 text-xs' : 'text-teal-600 text-xs'}>✓</span>
                   </div>
                   <span className={`text-sm font-medium ${
-                    isDark ? 'text-emerald-400' : 'text-emerald-700'
+                    isDark ? 'text-teal-400' : 'text-emerald-700'
                   }`}>
                     {problem.truth}
                   </span>
@@ -236,9 +236,9 @@ export const ScrollytellingProblem = ({ isDark = true }) => {
             {/* Truth Mode */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                <div className="w-3 h-3 rounded-full bg-teal-500" />
                 <h4 className={`text-xl font-bold ${
-                  isDark ? 'text-emerald-400' : 'text-emerald-700'
+                  isDark ? 'text-teal-400' : 'text-emerald-700'
                 }`}>Truth Mode</h4>
               </div>
               {[
@@ -249,12 +249,12 @@ export const ScrollytellingProblem = ({ isDark = true }) => {
               ].map((metric) => (
                 <div key={metric.label} className={`flex items-center justify-between p-4 rounded-xl border ${
                   isDark
-                    ? 'bg-slate-900/50 border-emerald-500/10'
+                    ? 'bg-slate-900/50 border-teal-500/10'
                     : 'bg-emerald-50 border-emerald-200/50'
                 }`}>
                   <span className={isDark ? 'text-slate-300' : 'text-slate-700'}>{metric.label}</span>
                   <span className={`font-mono font-bold ${
-                    isDark ? 'text-emerald-400' : 'text-emerald-700'
+                    isDark ? 'text-teal-400' : 'text-emerald-700'
                   }`}>{metric.value}</span>
                 </div>
               ))}
@@ -263,7 +263,7 @@ export const ScrollytellingProblem = ({ isDark = true }) => {
           
           {/* CTA */}
           <div className="mt-12 text-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_60px_rgba(16,185,129,0.4)]">
+            <button className="px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_20px_60px_rgba(16,185,129,0.4)]">
               See Your Truth →
             </button>
           </div>

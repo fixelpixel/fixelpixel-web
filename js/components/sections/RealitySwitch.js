@@ -29,7 +29,7 @@ const RealitySwitchMetric = ({ label, value, suffix, mode, isAnimating, color, i
   }, [value]);
   
   const progressPercent = inverse ? 100 - value : value;
-  const colorClass = color === 'emerald' ? 'from-emerald-500 to-emerald-600' : 'from-red-500 to-orange-500';
+  const colorClass = color === 'emerald' ? 'from-teal-500 to-teal-600' : 'from-red-500 to-orange-500';
   
   return (
     <div className={`rounded-3xl p-8 transition-all duration-500 ${
@@ -45,7 +45,7 @@ const RealitySwitchMetric = ({ label, value, suffix, mode, isAnimating, color, i
       </div>
       <div className={`text-5xl font-black mb-4 transition-colors duration-500 ${
         color === 'emerald' 
-          ? (isDark ? 'text-emerald-400' : 'text-emerald-600')
+          ? (isDark ? 'text-teal-400' : 'text-teal-600')
           : (isDark ? 'text-red-400' : 'text-red-600')
       }`}>
         {displayValue.toFixed(1)}{suffix}
@@ -118,10 +118,10 @@ export const RealitySwitch = ({ isDark = true }) => {
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
             <div className={`w-2 h-2 rounded-full transition-colors duration-500 ${
-              mode === 'truth' ? 'bg-emerald-500' : 'bg-red-500'
+              mode === 'truth' ? 'bg-teal-500' : 'bg-red-500'
             } animate-pulse`} />
             <span className={`text-xs font-mono uppercase tracking-wider transition-colors duration-500 ${
-              mode === 'truth' ? 'text-emerald-400' : 'text-red-400'
+              mode === 'truth' ? 'text-teal-400' : 'text-red-400'
             }`}>
               {mode === 'truth' ? 'Truth Mode Active' : 'Illusion Mode'}
             </span>
@@ -129,7 +129,7 @@ export const RealitySwitch = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Reality <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Switch</span>
+            Reality <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">Switch</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-12 ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -148,7 +148,7 @@ export const RealitySwitch = ({ isDark = true }) => {
             <button
               onClick={handleToggle}
               onKeyDown={handleKeyDown}
-              className="relative w-24 h-12 rounded-full focus:outline-none focus:ring-4 focus:ring-emerald-500/50 transition-all duration-300"
+              className="relative w-24 h-12 rounded-full focus:outline-none focus:ring-4 focus:ring-teal-500/50 transition-all duration-300"
               style={{
                 background: mode === 'truth' 
                   ? 'linear-gradient(135deg, #10b981, #6366f1)' 
@@ -173,7 +173,7 @@ export const RealitySwitch = ({ isDark = true }) => {
             </button>
             
             <span className={`text-lg font-semibold transition-colors duration-300 ${
-              mode === 'truth' ? 'text-emerald-400' : 'text-slate-600'
+              mode === 'truth' ? 'text-teal-400' : 'text-slate-600'
             }`}>
               Truth Mode
             </span>
@@ -254,11 +254,11 @@ export const RealitySwitch = ({ isDark = true }) => {
             </ul>
           </div>
           
-          <div className={`rounded-3xl p-8 border-2 border-emerald-500/20 ${
+          <div className={`rounded-3xl p-8 border-2 border-teal-500/20 ${
             isDark ? 'glass-morphism-strong' : 'bg-emerald-50'
           }`}>
             <h3 className={`text-2xl font-bold mb-6 flex items-center gap-3 ${
-              isDark ? 'text-emerald-400' : 'text-emerald-700'
+              isDark ? 'text-teal-400' : 'text-emerald-700'
             }`}>
               <span className="text-3xl">✨</span>
               Truth Mode Advantages
@@ -272,8 +272,8 @@ export const RealitySwitch = ({ isDark = true }) => {
                 'Unified data warehouse'
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className={`flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs mt-0.5 ${
-                    isDark ? 'text-emerald-400' : 'text-emerald-700'
+                  <span className={`flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-xs mt-0.5 ${
+                    isDark ? 'text-teal-400' : 'text-emerald-700'
                   }`}>✓</span>
                   <span className={`font-medium ${
                     isDark ? 'text-slate-300' : 'text-slate-700'

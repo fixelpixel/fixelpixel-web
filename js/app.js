@@ -156,11 +156,11 @@ const CausalImpactAnalysis = ({ theme }) => {
       <div className="absolute top-4 right-4 glass-morphism rounded-2xl p-4 space-y-2">
         <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">Attribution Weight</div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
+          <div className="w-3 h-3 rounded-full bg-violet-500"></div>
           <span className="text-slate-300">Paid Social</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+          <div className="w-3 h-3 rounded-full bg-teal-500"></div>
           <span className="text-slate-300">Organic</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
@@ -186,7 +186,7 @@ const CausalImpactAnalysis = ({ theme }) => {
 const StatBadge = ({ label, value }) => (
   <div className="glass-morphism rounded-xl px-4 py-2">
     <div className="text-xs font-mono text-slate-500">{label}</div>
-    <div className="text-lg font-bold text-emerald-400">{value}</div>
+    <div className="text-lg font-bold text-teal-400">{value}</div>
   </div>
 );
 
@@ -223,7 +223,7 @@ export const App = () => {
                 isDark ? 'glass-morphism' : 'glass-morphism-light'
               }`}>
                 <span className={`text-xs font-mono uppercase tracking-wider ${
-                  isDark ? 'text-indigo-400' : 'text-indigo-700'
+                  isDark ? 'text-violet-400' : 'text-indigo-700'
                 }`}>
                   AI Attribution Engine
                 </span>

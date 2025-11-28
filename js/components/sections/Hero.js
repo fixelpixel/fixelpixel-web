@@ -26,7 +26,7 @@ const FloatingDashboard = ({ isDark }) => {
   return (
     <div className="card-3d relative">
       {/* Glow effect */}
-      <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 via-indigo-500/20 to-emerald-500/20 rounded-3xl blur-3xl animate-glow"></div>
+      <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 via-indigo-500/20 to-teal-500/20 rounded-3xl blur-3xl animate-glow"></div>
       
       {/* Main card */}
       <div className={`relative rounded-3xl p-8 space-y-6 ${
@@ -38,7 +38,7 @@ const FloatingDashboard = ({ isDark }) => {
         <div className="flex items-center justify-between">
           <div>
             <div className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-emerald-400' : 'text-emerald-600'
+              isDark ? 'text-teal-400' : 'text-teal-600'
             }`}>Reality Sync</div>
             <div className={`text-sm ${
               isDark ? 'text-slate-400' : 'text-slate-600'
@@ -46,11 +46,11 @@ const FloatingDashboard = ({ isDark }) => {
           </div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
             <span className={`text-xs font-mono ${
-              isDark ? 'text-emerald-400' : 'text-emerald-600'
+              isDark ? 'text-teal-400' : 'text-teal-600'
             }`}>Live</span>
           </div>
         </div>
@@ -104,15 +104,15 @@ const MetricCard = ({ label, value, color, trend, isDark }) => (
       ? 'bg-slate-950/50 border-slate-800 hover:border-slate-700'
       : 'bg-white border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md'
   }`}>
-    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
     <div className="relative">
       <div className={`text-xs font-mono uppercase tracking-wide mb-1 ${
         isDark ? 'text-slate-500' : 'text-slate-600'
       }`}>{label}</div>
       <div className={`text-2xl font-bold ${
         color === 'emerald' 
-          ? (isDark ? 'text-emerald-400' : 'text-emerald-600') 
-          : (isDark ? 'text-indigo-400' : 'text-indigo-600')
+          ? (isDark ? 'text-teal-400' : 'text-teal-600') 
+          : (isDark ? 'text-violet-400' : 'text-indigo-600')
       }`}>
         {value}
       </div>
@@ -139,7 +139,7 @@ const LiveChart = () => {
       {data.map((height, i) => (
         <div key={i} className="flex-1 relative group">
           <div 
-            className="absolute bottom-0 left-0 right-0 rounded-t-sm bg-gradient-to-t from-emerald-500 to-indigo-400 transition-all duration-500 ease-out"
+            className="absolute bottom-0 left-0 right-0 rounded-t-sm bg-gradient-to-t from-teal-500 to-indigo-400 transition-all duration-500 ease-out"
             style={{ height: `${height}%` }}
           >
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -184,10 +184,13 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
       positions[i + 2] = (Math.random() - 0.5) * 10;
       
       // Light theme: darker particles (emerald-700 and indigo-700)
-      // Dark theme: bright particles (emerald-400 and indigo-400)
-      const color = Math.random() > 0.5 ? 
-        (isLight ? new THREE.Color(0x047857) : new THREE.Color(0x10b981)) : 
-        (isLight ? new THREE.Color(0x4338ca) : new THREE.Color(0x6366f1));
+      // Dark theme: bright particles (teal-400 and indigo-400)
+// Внутри цикла создания частиц
+const color = Math.random() > 0.5 ? 
+  // Основные: Фиолетовый неон (Бренд)
+  (isLight ? new THREE.Color(0x7c3aed) : new THREE.Color(0xa78bfa)) : 
+  // Второстепенные: Циан (Технологии) или Эмеральд (Деньги)
+  (isLight ? new THREE.Color(0x059669) : new THREE.Color(0x34d399));
       colors[i] = color.r;
       colors[i + 1] = color.g;
       colors[i + 2] = color.b;
@@ -294,8 +297,8 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
           <div className="flex flex-col items-center gap-4">
             <div className={`w-16 h-16 border-4 rounded-full animate-spin ${
               isDark
-                ? 'border-emerald-500/20 border-t-emerald-500'
-                : 'border-emerald-600/20 border-t-emerald-600'
+                ? 'border-teal-500/20 border-t-teal-500'
+                : 'border-teal-600/20 border-t-teal-600'
             }`} />
             <p className={`font-mono text-sm ${
               isDark ? 'text-slate-500' : 'text-slate-600'
@@ -340,8 +343,8 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
               isDark ? 'glass-morphism' : 'glass-morphism-light'
             }`}>
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
               </span>
               <span className={`text-xs font-mono tracking-wider uppercase ${
                 isDark ? 'text-emerald-300' : 'text-emerald-700'
@@ -374,11 +377,11 @@ export const Hero = ({ TrialFormButton, isDark = true }) => {
             }`}>
               AI-driven attribution that captures{' '}
               <span className={`font-semibold ${
-                isDark ? 'text-emerald-400' : 'text-emerald-700'
+                isDark ? 'text-teal-400' : 'text-emerald-700'
               }`}>everything</span>,
               understands{' '}
               <span className={`font-semibold ${
-                isDark ? 'text-indigo-400' : 'text-indigo-700'
+                isDark ? 'text-violet-400' : 'text-indigo-700'
               }`}>causality</span>,
               and reveals{' '}
               <span className={`font-semibold ${

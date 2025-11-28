@@ -15,14 +15,14 @@ export const EchoLoop = ({ isDark = true }) => {
       id: 'browser',
       icon: '🌐',
       label: 'Browser',
-      color: 'from-emerald-500 to-emerald-600',
+      color: 'from-teal-500 to-teal-600',
       stats: { events: '2.4M/day', latency: '12ms' }
     },
     {
       id: 'server',
       icon: '⚡',
       label: 'Server',
-      color: 'from-indigo-500 to-indigo-600',
+      color: 'from-violet-600 to-indigo-600',
       stats: { sync: '99.2%', drift: '<2%' }
     },
     {
@@ -46,9 +46,9 @@ export const EchoLoop = ({ isDark = true }) => {
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
-            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-violet-500 rounded-full animate-pulse" />
             <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-indigo-400' : 'text-indigo-700'
+              isDark ? 'text-violet-400' : 'text-indigo-700'
             }`}>
               Hybrid Engine
             </span>
@@ -56,7 +56,7 @@ export const EchoLoop = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-blue-400">Dual-Pipeline Sync</span>
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-400 to-blue-400">Dual-Pipeline Sync</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -111,7 +111,7 @@ export const EchoLoop = ({ isDark = true }) => {
                   {Object.entries(node.stats).map(([key, value]) => (
                     <div key={key} className="flex items-center justify-between mb-2 last:mb-0">
                       <span className="text-xs text-slate-500 uppercase font-mono">{key}</span>
-                      <span className="text-sm font-semibold text-emerald-400 font-mono">{value}</span>
+                      <span className="text-sm font-semibold text-teal-400 font-mono">{value}</span>
                     </div>
                   ))}
                 </div>
@@ -157,8 +157,8 @@ export const EchoLoop = ({ isDark = true }) => {
                 }`}
               >
                 <div className={`text-sm font-mono mb-2 ${
-                  process.color === 'emerald' ? 'text-emerald-400' :
-                  process.color === 'indigo' ? 'text-indigo-400' : 'text-blue-400'
+                  process.color === 'emerald' ? 'text-teal-400' :
+                  process.color === 'indigo' ? 'text-violet-400' : 'text-blue-400'
                 }`}>
                   STEP {process.step}
                 </div>

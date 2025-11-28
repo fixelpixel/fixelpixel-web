@@ -54,7 +54,7 @@ export const TrialFormButton = ({ location }) => {
           trackEvent('click_start_trial', { location });
         }}
         aria-label="Start free trial"
-        className="btn-magnetic ripple group px-8 py-4 min-h-[44px] min-w-[44px] bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-semibold rounded-2xl shadow-[0_20px_60px_rgba(16,185,129,0.4)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-emerald-500/50"
+        className="btn-magnetic ripple group px-8 py-4 min-h-[44px] min-w-[44px] bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-slate-950 font-semibold rounded-2xl shadow-[0_20px_60px_rgba(16,185,129,0.4)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-500/50"
       >
         <span className="flex items-center gap-3">
           Start Free
@@ -72,7 +72,7 @@ export const TrialFormButton = ({ location }) => {
             onClick={() => setShowModal(false)}
           />
           
-          <div className="relative glass-morphism-strong rounded-3xl p-8 max-w-md w-full border-2 border-emerald-500/20 shadow-2xl">
+          <div className="relative glass-morphism-strong rounded-3xl p-8 max-w-md w-full border-2 border-teal-500/20 shadow-2xl">
             {!success ? (
               <>
                 <button
@@ -100,7 +100,7 @@ export const TrialFormButton = ({ location }) => {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                       placeholder="John Doe"
                       required
                     />
@@ -115,7 +115,7 @@ export const TrialFormButton = ({ location }) => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                       placeholder="john@company.com"
                       required
                     />
@@ -130,7 +130,7 @@ export const TrialFormButton = ({ location }) => {
                       type="text"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                       placeholder="Acme Inc."
                     />
                   </div>
@@ -144,7 +144,7 @@ export const TrialFormButton = ({ location }) => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 disabled:from-slate-600 disabled:to-slate-700 text-white font-semibold rounded-xl transition-all duration-300 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Creating Account...' : 'Start Free Trial'}
                   </button>
@@ -152,8 +152,8 @@ export const TrialFormButton = ({ location }) => {
               </>
             ) : (
               <div className="text-center py-8">
-                <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>

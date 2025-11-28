@@ -46,8 +46,8 @@ export const Testimonials = ({ isDark = true }) => {
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-morphism mb-6">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-            <span className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
+            <div className="w-2 h-2 bg-violet-500 rounded-full animate-pulse" />
+            <span className="text-xs font-mono text-violet-400 uppercase tracking-wider">
               Social Proof
             </span>
           </div>
@@ -77,7 +77,7 @@ export const Testimonials = ({ isDark = true }) => {
               {/* Author */}
               <div className="flex items-center justify-between border-t border-slate-700/50 pt-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/10 flex items-center justify-center text-3xl">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600/20 to-indigo-600/10 flex items-center justify-center text-3xl">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -89,9 +89,9 @@ export const Testimonials = ({ isDark = true }) => {
                 </div>
                 
                 {/* Stat Badge */}
-                <div className="glass-morphism px-4 py-2 rounded-xl border border-emerald-500/20">
+                <div className="glass-morphism px-4 py-2 rounded-xl border border-teal-500/20">
                   <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Result</div>
-                  <div className="text-sm font-bold text-emerald-400">{testimonial.stat}</div>
+                  <div className="text-sm font-bold text-teal-400">{testimonial.stat}</div>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@ export const Testimonials = ({ isDark = true }) => {
         </div>
         
         {/* CTA Banner */}
-        <div className="mt-16 glass-morphism-strong rounded-3xl p-12 text-center border-2 border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-blue-500/5">
+        <div className="mt-16 glass-morphism-strong rounded-3xl p-12 text-center border-2 border-indigo-500/20 bg-gradient-to-br from-violet-600/5 to-blue-500/5">
           <h3 className="text-4xl font-black text-white mb-4">
             Join 200+ Growth Teams
           </h3>
@@ -107,7 +107,7 @@ export const Testimonials = ({ isDark = true }) => {
             Stop guessing. Start growing with AI-powered attribution that actually works.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+            <button className="px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-teal-500/50 transition-all duration-300 hover:scale-105">
               Start Free Trial →
             </button>
             <button className="px-8 py-4 glass-morphism text-white font-bold rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105">
@@ -116,15 +116,15 @@ export const Testimonials = ({ isDark = true }) => {
           </div>
           <div className="mt-6 flex items-center justify-center gap-8 text-sm text-slate-500">
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400">✓</span>
+              <span className="text-teal-400">✓</span>
               <span>No credit card</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400">✓</span>
+              <span className="text-teal-400">✓</span>
               <span>14-day free trial</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-emerald-400">✓</span>
+              <span className="text-teal-400">✓</span>
               <span>Cancel anytime</span>
             </div>
           </div>

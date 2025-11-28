@@ -67,19 +67,19 @@ export const IntegrationSteps = ({ isDark = true }) => {
           {steps.map((step, index) => (
             <div key={index} className={`relative p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
               isDark 
-                ? 'bg-slate-900/50 border-slate-800 hover:border-emerald-500/30' 
+                ? 'bg-slate-900/50 border-slate-800 hover:border-teal-500/30' 
                 : 'bg-white border-slate-200 shadow-lg hover:shadow-xl'
             }`}>
               <div className={`absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg ${
                 isDark 
-                  ? 'bg-slate-800 text-emerald-400 border border-slate-700' 
-                  : 'bg-white text-emerald-600 border border-slate-100'
+                  ? 'bg-slate-800 text-teal-400 border border-slate-700' 
+                  : 'bg-white text-teal-600 border border-slate-100'
               }`}>
                 {step.number}
               </div>
               
               <div className={`mb-6 mt-2 ${
-                isDark ? 'text-emerald-400' : 'text-emerald-600'
+                isDark ? 'text-teal-400' : 'text-teal-600'
               }`}>
                 {step.icon}
               </div>

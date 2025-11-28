@@ -7,8 +7,8 @@ export const GrowthOS = ({ isDark = true }) => {
       name: 'Tracking Layer',
       icon: '📡',
       color: 'emerald',
-      gradient: 'from-emerald-500/10 to-emerald-600/5',
-      borderColor: 'border-emerald-500/20',
+      gradient: 'from-teal-500/10 to-teal-600/5',
+      borderColor: 'border-teal-500/20',
       features: [
         { text: '100% Event Capture', icon: '✓' },
         { text: 'Identity Lock™', icon: '🔐' },
@@ -21,7 +21,7 @@ export const GrowthOS = ({ isDark = true }) => {
       name: 'Intelligence Layer',
       icon: '🧠',
       color: 'indigo',
-      gradient: 'from-indigo-500/10 to-indigo-600/5',
+      gradient: 'from-violet-600/10 to-indigo-600/5',
       borderColor: 'border-indigo-500/20',
       features: [
         { text: 'AI Attribution Model', icon: '🎯' },
@@ -58,9 +58,9 @@ export const GrowthOS = ({ isDark = true }) => {
           <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
             <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-emerald-400' : 'text-emerald-700'
+              isDark ? 'text-teal-400' : 'text-emerald-700'
             }`}>
               3-Tier Architecture
             </span>
@@ -68,7 +68,7 @@ export const GrowthOS = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Growth <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">OS</span>
+            Growth <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400">OS</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -91,8 +91,8 @@ export const GrowthOS = ({ isDark = true }) => {
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${
-                  tier.color === 'emerald' ? 'from-emerald-500 to-emerald-600' :
-                  tier.color === 'indigo' ? 'from-indigo-500 to-indigo-600' : 'from-blue-500 to-blue-600'
+                  tier.color === 'emerald' ? 'from-teal-500 to-teal-600' :
+                  tier.color === 'indigo' ? 'from-violet-600 to-indigo-600' : 'from-blue-500 to-blue-600'
                 } flex items-center justify-center text-3xl shadow-lg`}>
                   {tier.icon}
                 </div>
@@ -101,8 +101,8 @@ export const GrowthOS = ({ isDark = true }) => {
                     isDark ? 'text-white' : 'text-slate-900'
                   }`}>{tier.name}</h3>
                   <div className={`text-xs font-mono uppercase tracking-wider ${
-                    tier.color === 'emerald' ? (isDark ? 'text-emerald-400' : 'text-emerald-600') :
-                    tier.color === 'indigo' ? (isDark ? 'text-indigo-400' : 'text-indigo-600') : 
+                    tier.color === 'emerald' ? (isDark ? 'text-teal-400' : 'text-teal-600') :
+                    tier.color === 'indigo' ? (isDark ? 'text-violet-400' : 'text-indigo-600') : 
                     (isDark ? 'text-blue-400' : 'text-blue-600')
                   }`}>
                     Layer {tier.id === 'tracking' ? '01' : tier.id === 'intelligence' ? '02' : '03'}
@@ -118,8 +118,8 @@ export const GrowthOS = ({ isDark = true }) => {
                     className="flex items-center gap-3 group"
                   >
                     <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${
-                      tier.color === 'emerald' ? 'from-emerald-500/20 to-emerald-600/10' :
-                      tier.color === 'indigo' ? 'from-indigo-500/20 to-indigo-600/10' : 'from-blue-500/20 to-blue-600/10'
+                      tier.color === 'emerald' ? 'from-teal-500/20 to-teal-600/10' :
+                      tier.color === 'indigo' ? 'from-violet-600/20 to-indigo-600/10' : 'from-blue-500/20 to-blue-600/10'
                     } flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
                       <span className={`text-sm ${
                         isDark ? 'text-white' : 'text-slate-700'
@@ -137,13 +137,13 @@ export const GrowthOS = ({ isDark = true }) => {
               {/* Bottom Badge */}
               <div className={`mt-8 pt-6 border-t ${
                 isDark 
-                  ? (tier.color === 'emerald' ? 'border-emerald-500/10' : tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10')
+                  ? (tier.color === 'emerald' ? 'border-teal-500/10' : tier.color === 'indigo' ? 'border-indigo-500/10' : 'border-blue-500/10')
                   : 'border-slate-100'
               }`}>
                 <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">
                   Status: <span className={`${
-                    tier.color === 'emerald' ? (isDark ? 'text-emerald-400' : 'text-emerald-600') :
-                    tier.color === 'indigo' ? (isDark ? 'text-indigo-400' : 'text-indigo-600') : 
+                    tier.color === 'emerald' ? (isDark ? 'text-teal-400' : 'text-teal-600') :
+                    tier.color === 'indigo' ? (isDark ? 'text-violet-400' : 'text-indigo-600') : 
                     (isDark ? 'text-blue-400' : 'text-blue-600')
                   } font-bold`}>Active</span>
                 </div>
@@ -169,14 +169,14 @@ export const GrowthOS = ({ isDark = true }) => {
             </div>
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shadow-lg">
                   <span className="text-xl">📡</span>
                 </div>
                 <div className="text-xs text-slate-500 font-mono">Track</div>
               </div>
               <div className="text-slate-600 text-2xl">→</div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg">
                   <span className="text-xl">🧠</span>
                 </div>
                 <div className="text-xs text-slate-500 font-mono">Analyze</div>

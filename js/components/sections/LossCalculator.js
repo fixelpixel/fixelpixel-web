@@ -86,7 +86,7 @@ export const LossCalculator = ({ isDark = true }) => {
             isDark ? 'glass-morphism' : 'glass-morphism-light'
           }`}>
             <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-indigo-400' : 'text-indigo-700'
+              isDark ? 'text-violet-400' : 'text-indigo-700'
             }`}>
               ROI Calculator
             </span>
@@ -94,7 +94,7 @@ export const LossCalculator = ({ isDark = true }) => {
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">Hidden Loss</span>
+            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">Hidden Loss</span>
           </h2>
           <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
@@ -115,7 +115,7 @@ export const LossCalculator = ({ isDark = true }) => {
                 <label className="text-lg font-semibold text-white">
                   Monthly Ad Spend
                 </label>
-                <span className="text-2xl font-bold text-indigo-400 font-mono">
+                <span className="text-2xl font-bold text-violet-400 font-mono">
                   {formatCurrency(spend)}
                 </span>
               </div>
@@ -143,7 +143,7 @@ export const LossCalculator = ({ isDark = true }) => {
                 <label className="text-lg font-semibold text-white">
                   Average Order Value
                 </label>
-                <span className="text-2xl font-bold text-emerald-400 font-mono">
+                <span className="text-2xl font-bold text-teal-400 font-mono">
                   {formatCurrency(aov)}
                 </span>
               </div>
@@ -167,16 +167,16 @@ export const LossCalculator = ({ isDark = true }) => {
           </div>
           
           {/* Results Card */}
-          <div className="relative overflow-hidden rounded-3xl p-10 bg-gradient-to-br from-emerald-500/10 to-indigo-500/10 border-2 border-emerald-500/30">
+          <div className="relative overflow-hidden rounded-3xl p-10 bg-gradient-to-br from-teal-500/10 to-indigo-500/10 border-2 border-teal-500/30">
             {/* Glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-indigo-500 opacity-20 blur-2xl animate-glow" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 to-indigo-500 opacity-20 blur-2xl animate-glow" />
             
             <div className="relative">
               <div className="text-center mb-6">
                 <div className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-2">
                   Estimated Annual Recovered Revenue
                 </div>
-                <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-indigo-400 to-emerald-400 mb-4 animate-[gradient-shift_3s_ease_infinite]">
+                <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-400 to-teal-400 mb-4 animate-[gradient-shift_3s_ease_infinite]">
                   {formatCurrency(displayValue)}
                 </div>
                 <p className="text-slate-400 text-sm max-w-md mx-auto">
@@ -192,11 +192,11 @@ export const LossCalculator = ({ isDark = true }) => {
                 </div>
                 <div className="text-center">
                   <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Monthly Impact</div>
-                  <div className="text-2xl font-bold text-indigo-400">{formatCurrency(recovered / 12)}</div>
+                  <div className="text-2xl font-bold text-violet-400">{formatCurrency(recovered / 12)}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">ROAS Lift</div>
-                  <div className="text-2xl font-bold text-emerald-400">+2.1x</div>
+                  <div className="text-2xl font-bold text-teal-400">+2.1x</div>
                 </div>
               </div>
             </div>
@@ -204,7 +204,7 @@ export const LossCalculator = ({ isDark = true }) => {
           
           {/* CTA */}
           <div className="text-center mt-10">
-            <button className="px-10 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-bold text-lg rounded-2xl transition-all duration-300 shadow-[0_25px_70px_rgba(16,185,129,0.4)] hover:scale-105">
+            <button className="px-10 py-5 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-slate-950 font-bold text-lg rounded-2xl transition-all duration-300 shadow-[0_25px_70px_rgba(16,185,129,0.4)] hover:scale-105">
               Start Recovering Revenue →
             </button>
             <p className="text-sm text-slate-500 mt-4">
