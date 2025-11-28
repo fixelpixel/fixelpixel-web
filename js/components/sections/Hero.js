@@ -39,10 +39,10 @@ const FloatingDashboard = ({ isDark }) => {
           <div>
             <div className={`text-xs font-mono uppercase tracking-wider ${
               isDark ? 'text-teal-400' : 'text-teal-600'
-            }`}>Reality Sync</div>
+            }`}>Universal Sync</div>
             <div className={`text-sm ${
               isDark ? 'text-slate-400' : 'text-slate-600'
-            }`}>Causal Attribution Engine</div>
+            }`}>Multi-Platform Signal</div>
           </div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
@@ -51,38 +51,38 @@ const FloatingDashboard = ({ isDark }) => {
             </span>
             <span className={`text-xs font-mono ${
               isDark ? 'text-teal-400' : 'text-teal-600'
-            }`}>Live</span>
+            }`}>Active</span>
           </div>
         </div>
         
         {/* Metrics Grid */}
         <div className="grid grid-cols-2 gap-4">
           <MetricCard 
-            label="Recovered Revenue" 
+            label="Events Matched" 
             value={`$${metrics.revenue.toLocaleString()}`}
             color="emerald"
-            trend="+18%"
+            trend="+100%"
             isDark={isDark}
           />
           <MetricCard 
-            label="Real ROAS" 
-            value={`${metrics.roas}x`}
+            label="Platform Sync" 
+            value="5/5"
             color="indigo"
-            trend="+0.8x"
+            trend="Meta/Google/TT"
             isDark={isDark}
           />
           <MetricCard 
-            label="Signal Integrity" 
+            label="Signal Quality" 
             value={`${metrics.integrity.toFixed(1)}%`}
             color="emerald"
-            trend="Stable"
+            trend="Excellent"
             isDark={isDark}
           />
           <MetricCard 
-            label="LTV 90d" 
-            value={`$${metrics.ltv}`}
+            label="AI Insights" 
+            value="Active"
             color="indigo"
-            trend="+12%"
+            trend="Optimizing"
             isDark={isDark}
           />
         </div>

@@ -10,10 +10,10 @@ export const GrowthOS = ({ isDark = true }) => {
       gradient: 'from-teal-500/10 to-teal-600/5',
       borderColor: 'border-teal-500/20',
       features: [
-        { text: '100% Event Capture', icon: '✓' },
-        { text: 'Identity Lock™', icon: '🔐' },
-        { text: 'Real-time Sync', icon: '⚡' },
-        { text: 'Browser + Server Pipelines', icon: '🔄' }
+        { text: 'Meta, Google, TikTok, Pinterest', icon: '🌍' },
+        { text: 'Server-Side API (CAPI)', icon: '⚡' },
+        { text: 'Identity Resolution', icon: '🔐' },
+        { text: '100% Event Match', icon: '✓' }
       ]
     },
     {

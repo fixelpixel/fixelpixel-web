@@ -33,31 +33,31 @@ export const ScrollytellingProblem = ({ isDark = true }) => {
   
   const problems = [
     {
-      icon: '🚫',
-      title: 'Data Loss',
+      icon: '🧩',
+      title: 'Fragmented Reality',
+      stat: '5 Platforms',
+      statLabel: '0 Truths',
+      description: 'Meta says 10 sales. Google says 12. Shopify says 8. Every platform claims credit for the same sale. You have no single source of truth.',
+      illusion: 'Conflicting reports',
+      truth: 'Unified Data Layer'
+    },
+    {
+      icon: '📉',
+      title: 'Signal Decay',
       stat: '30-40%',
-      statLabel: 'Events Lost',
-      description: 'iOS blocking, cookie deletion, and ad-blocker apocalypse. Traditional pixels lose 30-40% of events before they even reach the server.',
-      illusion: 'You see partial data',
-      truth: '100% event capture'
+      statLabel: 'Data Loss',
+      description: 'iOS 17, AdBlockers, and cookie restrictions are killing browser tracking. Your pixels are firing blanks.',
+      illusion: 'Browser tracking',
+      truth: 'Server-Side API'
     },
     {
-      icon: '🎯',
-      title: 'Attribution Errors',
-      stat: '2.1x',
-      statLabel: 'ROAS Distortion',
-      description: 'Last-click bias credits the wrong channel. Bottom-funnel channels steal glory while top-funnel investments get ignored.',
-      illusion: 'Last-touch wins',
-      truth: 'Causal weighting'
-    },
-    {
-      icon: '📊',
-      title: 'Modeled Conversions',
+      icon: '🙈',
+      title: 'Blind Optimization',
       stat: '???',
-      statLabel: 'Mystery Box',
-      description: 'Google black box estimates conversions you cannot see. You are optimizing toward a number that may not exist.',
-      illusion: 'Modeled guesses',
-      truth: 'Ground truth data'
+      statLabel: 'Wasted Ad Spend',
+      description: 'Without accurate data, your AI ad algorithms are flying blind. You are scaling losers and cutting winners.',
+      illusion: 'Guesswork',
+      truth: 'AI-Guided Growth'
     }
   ];
   

@@ -1,7 +1,7 @@
 
 <!-- 
   Production Build
-  Generated: 2025-11-28T01:32:36.899Z
+  Generated: 2025-11-28T02:00:27.470Z
   Build Type: Optimized for production
   Framework: React 18 (Production)
   Three.js: r128
@@ -1332,10 +1332,10 @@ const FloatingDashboard = ({ isDark }) => {
           <div>
             <div className={`text-xs font-mono uppercase tracking-wider ${
               isDark ? 'text-teal-400' : 'text-teal-600'
-            }`}>Reality Sync</div>
+            }`}>Universal Sync</div>
             <div className={`text-sm ${
               isDark ? 'text-slate-400' : 'text-slate-600'
-            }`}>Causal Attribution Engine</div>
+            }`}>Multi-Platform Signal</div>
           </div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
@@ -1344,38 +1344,38 @@ const FloatingDashboard = ({ isDark }) => {
             </span>
             <span className={`text-xs font-mono ${
               isDark ? 'text-teal-400' : 'text-teal-600'
-            }`}>Live</span>
+            }`}>Active</span>
           </div>
         </div>
         
         {/* Metrics Grid */}
         <div className="grid grid-cols-2 gap-4">
           <MetricCard 
-            label="Recovered Revenue" 
+            label="Events Matched" 
             value={`$${metrics.revenue.toLocaleString()}`}
             color="emerald"
-            trend="+18%"
+            trend="+100%"
             isDark={isDark}
           />
           <MetricCard 
-            label="Real ROAS" 
-            value={`${metrics.roas}x`}
+            label="Platform Sync" 
+            value="5/5"
             color="indigo"
-            trend="+0.8x"
+            trend="Meta/Google/TT"
             isDark={isDark}
           />
           <MetricCard 
-            label="Signal Integrity" 
+            label="Signal Quality" 
             value={`${metrics.integrity.toFixed(1)}%`}
             color="emerald"
-            trend="Stable"
+            trend="Excellent"
             isDark={isDark}
           />
           <MetricCard 
-            label="LTV 90d" 
-            value={`$${metrics.ltv}`}
+            label="AI Insights" 
+            value="Active"
             color="indigo"
-            trend="+12%"
+            trend="Optimizing"
             isDark={isDark}
           />
         </div>
@@ -1764,31 +1764,31 @@ const color = Math.random() > 0.5 ?
   
   const problems = [
     {
-      icon: '🚫',
-      title: 'Data Loss',
+      icon: '🧩',
+      title: 'Fragmented Reality',
+      stat: '5 Platforms',
+      statLabel: '0 Truths',
+      description: 'Meta says 10 sales. Google says 12. Shopify says 8. Every platform claims credit for the same sale. You have no single source of truth.',
+      illusion: 'Conflicting reports',
+      truth: 'Unified Data Layer'
+    },
+    {
+      icon: '📉',
+      title: 'Signal Decay',
       stat: '30-40%',
-      statLabel: 'Events Lost',
-      description: 'iOS blocking, cookie deletion, and ad-blocker apocalypse. Traditional pixels lose 30-40% of events before they even reach the server.',
-      illusion: 'You see partial data',
-      truth: '100% event capture'
+      statLabel: 'Data Loss',
+      description: 'iOS 17, AdBlockers, and cookie restrictions are killing browser tracking. Your pixels are firing blanks.',
+      illusion: 'Browser tracking',
+      truth: 'Server-Side API'
     },
     {
-      icon: '🎯',
-      title: 'Attribution Errors',
-      stat: '2.1x',
-      statLabel: 'ROAS Distortion',
-      description: 'Last-click bias credits the wrong channel. Bottom-funnel channels steal glory while top-funnel investments get ignored.',
-      illusion: 'Last-touch wins',
-      truth: 'Causal weighting'
-    },
-    {
-      icon: '📊',
-      title: 'Modeled Conversions',
+      icon: '🙈',
+      title: 'Blind Optimization',
       stat: '???',
-      statLabel: 'Mystery Box',
-      description: 'Google black box estimates conversions you cannot see. You are optimizing toward a number that may not exist.',
-      illusion: 'Modeled guesses',
-      truth: 'Ground truth data'
+      statLabel: 'Wasted Ad Spend',
+      description: 'Without accurate data, your AI ad algorithms are flying blind. You are scaling losers and cutting winners.',
+      illusion: 'Guesswork',
+      truth: 'AI-Guided Growth'
     }
   ];
   
@@ -2515,23 +2515,23 @@ const RealitySwitch = ({ isDark = true }) => {
   const steps = [
     {
       number: '01',
-      title: 'Install Pixel',
-      description: 'One script tag. 5 minutes. Works with Shopify, WooCommerce, custom stacks.',
+      title: 'Universal Capture',
+      description: 'One script. One server connection. We capture every event via Browser + Server API to bypass blockers.',
       icon: '⚡',
       color: 'teal'
     },
     {
       number: '02', 
-      title: 'We Capture Everything',
-      description: 'Server-side tracking + first-party cookies. iOS, Safari, ad-blockers — nothing escapes.',
-      icon: '🎯',
+      title: 'Signal Enrichment',
+      description: 'Our AI cleans the data, matches users across devices, and creates a single "Golden Record" for every customer.',
+      icon: '🧠',
       color: 'indigo'
     },
     {
       number: '03',
-      title: 'See Real Attribution',
-      description: 'AI weighs every touchpoint. No black-box guessing. Know exactly which ads drive revenue.',
-      icon: '📊',
+      title: 'Omnichannel Sync',
+      description: 'We push 100% accurate, enriched data to Meta, Google, TikTok, Pinterest, and Klaviyo simultaneously.',
+      icon: '🔄',
       color: 'emerald'
     }
   ];

@@ -4,23 +4,23 @@ export const HowItWorks = ({ isDark = true }) => {
   const steps = [
     {
       number: '01',
-      title: 'Install Pixel',
-      description: 'One script tag. 5 minutes. Works with Shopify, WooCommerce, custom stacks.',
+      title: 'Universal Capture',
+      description: 'One script. One server connection. We capture every event via Browser + Server API to bypass blockers.',
       icon: '⚡',
       color: 'teal'
     },
     {
       number: '02', 
-      title: 'We Capture Everything',
-      description: 'Server-side tracking + first-party cookies. iOS, Safari, ad-blockers — nothing escapes.',
-      icon: '🎯',
+      title: 'Signal Enrichment',
+      description: 'Our AI cleans the data, matches users across devices, and creates a single "Golden Record" for every customer.',
+      icon: '🧠',
       color: 'indigo'
     },
     {
       number: '03',
-      title: 'See Real Attribution',
-      description: 'AI weighs every touchpoint. No black-box guessing. Know exactly which ads drive revenue.',
-      icon: '📊',
+      title: 'Omnichannel Sync',
+      description: 'We push 100% accurate, enriched data to Meta, Google, TikTok, Pinterest, and Klaviyo simultaneously.',
+      icon: '🔄',
       color: 'emerald'
     }
   ];
