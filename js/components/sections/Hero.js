@@ -355,38 +355,34 @@ const color = Math.random() > 0.5 ?
             
             {/* Headline */}
             <h1 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1] tracking-tight"
               style={{ 
                 fontWeight: 900,
-                letterSpacing: '-0.04em'
+                letterSpacing: '-0.03em'
               }}
             >
               <span className={`block ${
                 isDark ? 'text-white' : 'text-slate-900'
               }`}>
-                The Truth
+                Your Ads Aren't
+              </span>
+              <span className={`block ${
+                isDark ? 'text-white' : 'text-slate-900'
+              }`}>
+                Broken.
               </span>
               <span className="block text-gradient">
-                Layer.
+                Your Data Is.
               </span>
             </h1>
             
-            {/* Subheadline with typewriter effect */}
+            {/* Subheadline */}
             <p className={`text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-xl font-light ${
               isDark ? 'text-slate-400' : 'text-slate-600'
             }`}>
-              AI-driven attribution that captures{' '}
-              <span className={`font-semibold ${
+              Recover <span className={`font-semibold ${
                 isDark ? 'text-teal-400' : 'text-emerald-700'
-              }`}>everything</span>,
-              understands{' '}
-              <span className={`font-semibold ${
-                isDark ? 'text-violet-400' : 'text-indigo-700'
-              }`}>causality</span>,
-              and reveals{' '}
-              <span className={`font-semibold ${
-                isDark ? 'text-white' : 'text-slate-900'
-              }`}>real ROAS</span>.
+              }`}>30% of lost conversions</span>. See what Meta and Google can't show you.
             </p>
             
             {/* CTA Buttons */}

@@ -64,58 +64,54 @@ export const LossCalculator = ({ isDark = true }) => {
     }).format(value);
   };
   
+  // Slider track color based on theme
+  const sliderTrackBg = isDark ? '#1e293b' : '#e2e8f0';
+  
   return (
     <section 
       ref={sectionRef}
-      className={`py-32 relative overflow-hidden ${
+      className={`py-24 relative overflow-hidden ${
         isDark
-          ? 'bg-gradient-to-b from-slate-900 to-slate-950'
-          : 'bg-gradient-to-b from-slate-50 to-white'
+          ? 'bg-slate-950'
+          : 'bg-white'
       }`}
     >
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.05),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(16,185,129,0.05),transparent_50%)]" />
-      </div>
-      
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
-            isDark ? 'glass-morphism' : 'glass-morphism-light'
-          }`}>
-            <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-violet-400' : 'text-indigo-700'
-            }`}>
-              ROI Calculator
-            </span>
-          </div>
-          <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
+        <div className="text-center mb-12">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black mb-4 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">Hidden Loss</span>
+            How Much Are You <span className={`${
+              isDark ? 'text-red-400' : 'text-red-600'
+            }`}>Losing</span>?
           </h2>
-          <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
+          <p className={`text-lg max-w-2xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            See how much revenue traditional analytics are hiding from you
+            Traditional analytics miss 30-40% of your conversions. Calculate your hidden loss.
           </p>
         </div>
         
         {/* Calculator Card */}
-        <div className={`rounded-3xl p-10 md:p-12 border-2 border-indigo-500/20 ${
-          isDark ? 'glass-morphism-strong' : 'bg-white shadow-xl'
+        <div className={`rounded-2xl p-8 md:p-10 ${
+          isDark 
+            ? 'bg-slate-900 border border-slate-800' 
+            : 'bg-slate-50 border border-slate-200'
         }`}>
           {/* Sliders */}
-          <div className="space-y-10 mb-12">
+          <div className="space-y-8 mb-10">
             {/* Monthly Spend Slider */}
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <label className="text-lg font-semibold text-white">
+              <div className="flex items-center justify-between mb-3">
+                <label className={`text-base font-semibold ${
+                  isDark ? 'text-slate-300' : 'text-slate-700'
+                }`}>
                   Monthly Ad Spend
                 </label>
-                <span className="text-2xl font-bold text-violet-400 font-mono">
+                <span className={`text-xl font-bold font-mono ${
+                  isDark ? 'text-indigo-400' : 'text-indigo-600'
+                }`}>
                   {formatCurrency(spend)}
                 </span>
               </div>
@@ -126,12 +122,14 @@ export const LossCalculator = ({ isDark = true }) => {
                 step="5000"
                 value={spend}
                 onChange={(e) => setSpend(parseInt(e.target.value))}
-                className="w-full h-3 rounded-full appearance-none cursor-pointer"
+                className="w-full h-2 rounded-full appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${((spend - 10000) / (500000 - 10000)) * 100}%, #1e293b ${((spend - 10000) / (500000 - 10000)) * 100}%, #1e293b 100%)`
+                  background: `linear-gradient(to right, #6366f1 0%, #6366f1 ${((spend - 10000) / (500000 - 10000)) * 100}%, ${sliderTrackBg} ${((spend - 10000) / (500000 - 10000)) * 100}%, ${sliderTrackBg} 100%)`
                 }}
               />
-              <div className="flex justify-between text-xs text-slate-500 mt-2 font-mono">
+              <div className={`flex justify-between text-xs mt-2 font-mono ${
+                isDark ? 'text-slate-600' : 'text-slate-500'
+              }`}>
                 <span>$10K</span>
                 <span>$500K</span>
               </div>
@@ -139,11 +137,15 @@ export const LossCalculator = ({ isDark = true }) => {
             
             {/* AOV Slider */}
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <label className="text-lg font-semibold text-white">
+              <div className="flex items-center justify-between mb-3">
+                <label className={`text-base font-semibold ${
+                  isDark ? 'text-slate-300' : 'text-slate-700'
+                }`}>
                   Average Order Value
                 </label>
-                <span className="text-2xl font-bold text-teal-400 font-mono">
+                <span className={`text-xl font-bold font-mono ${
+                  isDark ? 'text-teal-400' : 'text-teal-600'
+                }`}>
                   {formatCurrency(aov)}
                 </span>
               </div>
@@ -154,73 +156,72 @@ export const LossCalculator = ({ isDark = true }) => {
                 step="10"
                 value={aov}
                 onChange={(e) => setAov(parseInt(e.target.value))}
-                className="w-full h-3 rounded-full appearance-none cursor-pointer"
+                className="w-full h-2 rounded-full appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #10b981 0%, #10b981 ${((aov - 50) / (500 - 50)) * 100}%, #1e293b ${((aov - 50) / (500 - 50)) * 100}%, #1e293b 100%)`
+                  background: `linear-gradient(to right, #10b981 0%, #10b981 ${((aov - 50) / (500 - 50)) * 100}%, ${sliderTrackBg} ${((aov - 50) / (500 - 50)) * 100}%, ${sliderTrackBg} 100%)`
                 }}
               />
-              <div className="flex justify-between text-xs text-slate-500 mt-2 font-mono">
+              <div className={`flex justify-between text-xs mt-2 font-mono ${
+                isDark ? 'text-slate-600' : 'text-slate-500'
+              }`}>
                 <span>$50</span>
                 <span>$500</span>
               </div>
             </div>
           </div>
           
-          {/* Results Card */}
-          <div className="relative overflow-hidden rounded-3xl p-10 bg-gradient-to-br from-teal-500/10 to-indigo-500/10 border-2 border-teal-500/30">
-            {/* Glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 to-indigo-500 opacity-20 blur-2xl animate-glow" />
-            
-            <div className="relative">
-              <div className="text-center mb-6">
-                <div className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-2">
-                  Estimated Annual Recovered Revenue
-                </div>
-                <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-400 to-teal-400 mb-4 animate-[gradient-shift_3s_ease_infinite]">
-                  {formatCurrency(displayValue)}
-                </div>
-                <p className="text-slate-400 text-sm max-w-md mx-auto">
-                  This is revenue you are currently losing to attribution gaps and data loss
-                </p>
-              </div>
-              
-              {/* Breakdown */}
-              <div className="grid md:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-700/50">
-                <div className="text-center">
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Data Loss</div>
-                  <div className="text-2xl font-bold text-red-400">30%</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Monthly Impact</div>
-                  <div className="text-2xl font-bold text-violet-400">{formatCurrency(recovered / 12)}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">ROAS Lift</div>
-                  <div className="text-2xl font-bold text-teal-400">+2.1x</div>
-                </div>
-              </div>
+          {/* Results */}
+          <div className={`rounded-xl p-8 text-center ${
+            isDark 
+              ? 'bg-gradient-to-br from-teal-500/10 to-indigo-500/10 border border-teal-500/20' 
+              : 'bg-gradient-to-br from-teal-50 to-indigo-50 border border-teal-200'
+          }`}>
+            <div className={`text-sm font-mono uppercase tracking-wider mb-2 ${
+              isDark ? 'text-slate-500' : 'text-slate-600'
+            }`}>
+              Annual Revenue You're Missing
             </div>
-          </div>
-          
-          {/* CTA */}
-          <div className="text-center mt-10">
-            <button className="px-10 py-5 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-slate-950 font-bold text-lg rounded-2xl transition-all duration-300 shadow-[0_25px_70px_rgba(16,185,129,0.4)] hover:scale-105">
-              Start Recovering Revenue →
-            </button>
-            <p className="text-sm text-slate-500 mt-4">
-              No credit card required • 14-day free trial
+            <div className={`text-5xl md:text-6xl font-black mb-2 ${
+              isDark 
+                ? 'text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400' 
+                : 'text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-indigo-600'
+            }`}>
+              {formatCurrency(displayValue)}
+            </div>
+            <p className={`text-sm ${
+              isDark ? 'text-slate-500' : 'text-slate-600'
+            }`}>
+              Based on 30% average data loss rate
             </p>
           </div>
-        </div>
-        
-        {/* Formula Explanation */}
-        <div className="mt-12 text-center">
-          <button 
-            className="text-sm text-slate-500 hover:text-slate-400 transition-colors font-mono"
-            onClick={() => alert('Formula: (Monthly Spend × 30% loss rate) × (AOV impact factor) × 12 months\n\nBased on industry average 30-40% event loss and 2.1x ROAS improvement with proper attribution.')}
-          >
-            How is this calculated? ↓
-          </button>
+          
+          {/* Stats Row */}
+          <div className="grid grid-cols-3 gap-4 mt-6">
+            <div className="text-center">
+              <div className={`text-2xl font-bold ${
+                isDark ? 'text-red-400' : 'text-red-600'
+              }`}>30%</div>
+              <div className={`text-xs ${
+                isDark ? 'text-slate-600' : 'text-slate-500'
+              }`}>Data Loss</div>
+            </div>
+            <div className="text-center">
+              <div className={`text-2xl font-bold ${
+                isDark ? 'text-indigo-400' : 'text-indigo-600'
+              }`}>{formatCurrency(recovered / 12)}</div>
+              <div className={`text-xs ${
+                isDark ? 'text-slate-600' : 'text-slate-500'
+              }`}>Monthly</div>
+            </div>
+            <div className="text-center">
+              <div className={`text-2xl font-bold ${
+                isDark ? 'text-teal-400' : 'text-teal-600'
+              }`}>+2.1x</div>
+              <div className={`text-xs ${
+                isDark ? 'text-slate-600' : 'text-slate-500'
+              }`}>ROAS Lift</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

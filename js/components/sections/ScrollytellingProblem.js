@@ -82,36 +82,30 @@ export const ScrollytellingProblem = ({ isDark = true }) => {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
-            isDark ? 'glass-morphism' : 'glass-morphism-light'
-          }`}>
-            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-            <span className={`text-xs font-mono uppercase tracking-wider ${
-              isDark ? 'text-red-400' : 'text-red-600'
-            }`}>
-              The Illusion
-            </span>
-          </div>
-          <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 ${
+        <div className="text-center mb-16">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black mb-4 ${
             isDark ? 'text-white' : 'text-slate-900'
           }`}>
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Broken</span> Attribution Reality
+            You're Optimizing Toward a <span className={`${
+              isDark ? 'text-red-400' : 'text-red-600'
+            }`}>Lie</span>
           </h2>
-          <p className={`text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto ${
+          <p className={`text-lg max-w-2xl mx-auto ${
             isDark ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Your analytics lie to you. Not because they want to — because they can't see the truth.
+            Traditional analytics can't see what's actually happening. Here's what they're hiding.
           </p>
         </div>
         
         {/* Problem Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
           {problems.map((problem, index) => (
             <div
               key={problem.title}
-              className={`rounded-3xl p-8 transition-all duration-700 ${
-                isDark ? 'glass-morphism' : 'glass-morphism-light'
+              className={`rounded-2xl p-6 transition-all duration-500 ${
+                isDark 
+                  ? 'bg-slate-800/50 border border-slate-700/50 hover:border-slate-600' 
+                  : 'bg-white border border-slate-200 shadow-lg hover:shadow-xl'
               } ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 

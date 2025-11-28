@@ -46,10 +46,8 @@ const hero = extractComponent(readFile('js/components/sections/Hero.js'));
 const problem = extractComponent(readFile('js/components/sections/ScrollytellingProblem.js'));
 const reality = extractComponent(readFile('js/components/sections/RealitySwitch.js'));
 const calculator = extractComponent(readFile('js/components/sections/LossCalculator.js'));
-const echoLoop = extractComponent(readFile('js/components/sections/EchoLoop.js'));
-const growthOS = extractComponent(readFile('js/components/sections/GrowthOS.js'));
+const howItWorks = extractComponent(readFile('js/components/sections/HowItWorks.js'));
 const testimonials = extractComponent(readFile('js/components/sections/Testimonials.js'));
-const integrationSteps = extractComponent(readFile('js/components/sections/IntegrationSteps.js'));
 const finalCTA = extractComponent(readFile('js/components/sections/FinalCTA.js'));
 const footer = extractComponent(readFile('js/components/sections/Footer.js'));
 
@@ -179,10 +177,8 @@ ${readFile('css/styles.css')}
     ${problem}
     ${reality}
     ${calculator}
-    ${echoLoop}
-    ${growthOS}
+    ${howItWorks}
     ${testimonials}
-    ${integrationSteps}
     ${finalCTA}
     ${footer}
 
